@@ -1,0 +1,576 @@
+/* ════════════════════════════════════════════════════
+   Sommelier de Chile — estilo "carta de vinos"
+   Paleta: vino tinto, dorado y crema. Títulos con serifas.
+   ════════════════════════════════════════════════════ */
+
+:root {
+  --vino: #5b1a2b;
+  --vino-oscuro: #3d1220;
+  --vino-claro: #7b2233;
+  --dorado: #c9a24b;
+  --dorado-claro: #e3c879;
+  --crema: #f6efe2;
+  --crema-papel: #fbf6ec;
+  --tinta: #2e2024;
+  --tinta-suave: #5d4a4f;
+  --linea: #e0d3bd;
+  --sombra: 0 10px 30px rgba(61, 18, 32, 0.18);
+
+  --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --texto: 'EB Garamond', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--texto);
+  color: var(--tinta);
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(201, 162, 75, 0.12), transparent 70%),
+    var(--crema);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 18px 60px;
+}
+
+/* ───────── Encabezado ───────── */
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 26px 4px 18px;
+  border-bottom: 2px solid var(--dorado);
+  margin-bottom: 4px;
+}
+
+.cabecera-marca {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cabecera-copa { font-size: 38px; line-height: 1; }
+
+.cabecera-titulo {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--vino);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.cabecera-lema {
+  margin: 2px 0 0;
+  font-style: italic;
+  color: var(--tinta-suave);
+  font-size: 16px;
+}
+
+.cabecera-nav { display: flex; gap: 8px; }
+
+.nav-btn {
+  font-family: var(--serif);
+  font-size: 18px;
+  background: transparent;
+  border: 1px solid var(--linea);
+  color: var(--vino);
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.nav-btn:hover { border-color: var(--dorado); background: rgba(201, 162, 75, 0.1); }
+.nav-btn.activo {
+  background: var(--vino);
+  color: var(--crema-papel);
+  border-color: var(--vino);
+}
+
+/* ───────── Buscador ───────── */
+.buscador-wrap {
+  position: relative;
+  margin: 22px 0 10px;
+}
+
+.buscador {
+  width: 100%;
+  font-family: var(--texto);
+  font-size: 18px;
+  padding: 14px 44px 14px 18px;
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  background: var(--crema-papel);
+  color: var(--tinta);
+  box-shadow: inset 0 1px 3px rgba(61, 18, 32, 0.06);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.buscador::placeholder { color: #a59384; font-style: italic; }
+.buscador:focus {
+  outline: none;
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.22);
+}
+
+.buscador-limpiar {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: var(--vino);
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ───────── Intro ───────── */
+.intro { margin: 8px 0 18px; }
+.intro-texto {
+  font-size: 19px;
+  color: var(--tinta-suave);
+  max-width: 640px;
+  font-style: italic;
+}
+
+/* ───────── Migas de pan ───────── */
+.migas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 6px 0 16px;
+  font-family: var(--serif);
+  font-size: 18px;
+}
+.miga {
+  background: none;
+  border: none;
+  color: var(--vino-claro);
+  cursor: pointer;
+  padding: 2px 4px;
+  font: inherit;
+}
+.miga:hover { text-decoration: underline; }
+.miga.actual { color: var(--tinta); font-weight: 600; cursor: default; }
+.miga-sep { color: var(--dorado); }
+
+/* ───────── Layout explorar ───────── */
+.explorar-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.explorar-layout.con-region {
+  grid-template-columns: minmax(280px, 360px) 1fr;
+}
+
+/* ───────── Mapa ───────── */
+.mapa-wrap {
+  background: linear-gradient(180deg, var(--crema-papel), #f1e7d4);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+  padding: 12px 8px 6px;
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 12px;
+}
+.mapa-svg { width: 100%; height: auto; display: block; }
+
+.mapa-region { cursor: pointer; }
+.mapa-poligono {
+  stroke: var(--crema-papel);
+  stroke-width: 2;
+  transition: opacity 0.18s ease, filter 0.18s ease;
+  opacity: 0.82;
+}
+.mapa-region:hover .mapa-poligono { opacity: 1; }
+.mapa-region.activa .mapa-poligono {
+  opacity: 1;
+  stroke: var(--dorado);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px rgba(201, 162, 75, 0.6));
+}
+.mapa-region:focus { outline: none; }
+.mapa-region:focus-visible .mapa-poligono {
+  stroke: var(--dorado);
+  stroke-width: 3;
+}
+
+.mapa-punto { fill: var(--dorado-claro); stroke: var(--vino-oscuro); stroke-width: 1; }
+.mapa-conector { stroke: var(--dorado); stroke-width: 1; stroke-dasharray: 2 3; }
+.mapa-etiqueta {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  fill: var(--vino);
+}
+.mapa-region.activa .mapa-etiqueta { fill: var(--vino-claro); }
+.mapa-sub { font-family: var(--texto); font-size: 13px; fill: var(--tinta-suave); }
+
+.mapa-brujula { font-family: var(--serif); font-size: 18px; font-weight: 700; fill: var(--dorado); }
+.mapa-eje { stroke: var(--dorado); stroke-width: 1; stroke-dasharray: 1 5; opacity: 0.7; }
+.mapa-oceano {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  fill: #9bb0bd;
+  letter-spacing: 2px;
+}
+.mapa-hint {
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--tinta-suave);
+  margin: 4px 0 8px;
+}
+
+/* ───────── Títulos de sección ───────── */
+.titulo-seccion {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--vino);
+  margin: 0 0 6px;
+  line-height: 1.15;
+}
+.titulo-seccion::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--dorado);
+  margin-top: 8px;
+}
+.region-desc {
+  color: var(--tinta-suave);
+  font-size: 17px;
+  margin: 10px 0 16px;
+  max-width: 70ch;
+}
+
+/* ───────── Panel de valles ───────── */
+.panel-valles { margin-bottom: 18px; }
+.lista-valles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.chip-valle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: 19px;
+  background: var(--crema-papel);
+  border: 1px solid var(--linea);
+  color: var(--vino);
+  padding: 9px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.chip-valle:hover:not(:disabled) { border-color: var(--dorado); background: #fff; }
+.chip-valle.activo {
+  background: var(--vino);
+  color: var(--crema-papel);
+  border-color: var(--vino);
+}
+.chip-valle:disabled { opacity: 0.4; cursor: not-allowed; }
+.chip-conteo {
+  font-family: var(--texto);
+  font-size: 13px;
+  background: var(--dorado);
+  color: var(--vino-oscuro);
+  border-radius: 999px;
+  min-width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+.chip-valle.activo .chip-conteo { background: var(--dorado-claro); }
+
+/* ───────── Grilla de viñas ───────── */
+.lista-vinas { margin-top: 8px; }
+.grilla-vinas {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+}
+.card-vina {
+  width: 100%;
+  text-align: left;
+  background: var(--crema-papel);
+  border: 1px solid var(--linea);
+  border-left: 4px solid var(--vino);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  font: inherit;
+  color: inherit;
+}
+.card-vina:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra);
+  border-left-color: var(--dorado);
+}
+.card-vina-nombre {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--vino);
+  margin: 0 0 2px;
+  line-height: 1.15;
+}
+.card-vina-valle {
+  margin: 0 0 10px;
+  font-style: italic;
+  color: var(--tinta-suave);
+  font-size: 15px;
+}
+.card-vina-cepas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.mini-cepa {
+  font-size: 13px;
+  background: rgba(201, 162, 75, 0.16);
+  color: var(--vino-oscuro);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.vacio {
+  font-style: italic;
+  color: var(--tinta-suave);
+  padding: 16px 0;
+}
+
+/* ───────── Ficha modal ───────── */
+.ficha-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(40, 12, 22, 0.6);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 30px 16px;
+  overflow-y: auto;
+  z-index: 100;
+  animation: aparecer 0.18s ease;
+}
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
+
+.ficha {
+  position: relative;
+  background:
+    linear-gradient(180deg, var(--crema-papel), var(--crema));
+  border: 1px solid var(--dorado);
+  border-radius: 16px;
+  max-width: 620px;
+  width: 100%;
+  padding: 34px 32px 30px;
+  box-shadow: 0 24px 60px rgba(40, 12, 22, 0.4);
+  animation: subir 0.22s ease;
+}
+@keyframes subir { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.ficha-cerrar {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--linea);
+  background: #fff;
+  color: var(--vino);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.ficha-cerrar:hover { background: var(--vino); color: #fff; }
+
+.ficha-region {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  color: var(--dorado);
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+.ficha-nombre {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--vino);
+  margin: 0;
+  line-height: 1.1;
+}
+.ficha-divisor {
+  text-align: center;
+  color: var(--dorado);
+  font-size: 22px;
+  margin: 12px 0 14px;
+}
+.ficha-descripcion {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--tinta);
+  margin: 0 0 20px;
+}
+.ficha-bloque { margin-bottom: 18px; }
+.ficha-label {
+  font-family: var(--serif);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--vino-claro);
+  margin: 0 0 6px;
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 4px;
+}
+.ficha-terruno { margin: 0; color: var(--tinta-suave); font-size: 17px; line-height: 1.55; }
+
+.ficha-cepas, .ficha-destacados {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ficha-cepas { display: flex; flex-wrap: wrap; gap: 8px; }
+.ficha-cepa {
+  background: var(--vino);
+  color: var(--crema-papel);
+  font-size: 15px;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.ficha-destacado {
+  font-size: 18px;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--linea);
+}
+.ficha-destacado:last-child { border-bottom: none; }
+.copa { margin-right: 4px; }
+
+/* ───────── Sección Cepas ───────── */
+.grilla-cepas {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.card-cepa {
+  background: var(--crema-papel);
+  border: 1px solid var(--linea);
+  border-top: 5px solid var(--vino);
+  border-radius: 12px;
+  padding: 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card-cepa.tipo-blanca { border-top-color: var(--dorado); }
+.card-cepa-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.card-cepa-nombre {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--vino);
+  margin: 0;
+}
+.card-cepa-tipo {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--vino-oscuro);
+  background: rgba(201, 162, 75, 0.25);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.card-cepa.tipo-blanca .card-cepa-tipo { background: rgba(201, 162, 75, 0.4); }
+.card-cepa-nota {
+  font-size: 16px;
+  color: var(--tinta-suave);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  flex: 1;
+}
+.btn-ver-vinas {
+  align-self: flex-start;
+  font-family: var(--serif);
+  font-size: 16px;
+  background: none;
+  border: 1px solid var(--linea);
+  color: var(--vino);
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.btn-ver-vinas:hover { background: var(--vino); color: var(--crema-papel); border-color: var(--vino); }
+
+/* ───────── Pie ───────── */
+.pie {
+  margin-top: 44px;
+  padding-top: 18px;
+  border-top: 2px solid var(--dorado);
+  text-align: center;
+  color: var(--tinta-suave);
+  font-style: italic;
+}
+.pie-nota { font-size: 14px; opacity: 0.8; margin-top: 4px; }
+
+/* ───────── Responsive (celular) ───────── */
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .explorar-layout.con-region { grid-template-columns: 1fr; }
+  .mapa-wrap { position: relative; top: 0; max-width: 420px; margin: 0 auto; }
+  .cabecera { justify-content: center; text-align: center; }
+  .cabecera-marca { justify-content: center; }
+  .cabecera-titulo { font-size: 28px; }
+  .cabecera-nav { width: 100%; justify-content: center; }
+  .titulo-seccion { font-size: 26px; }
+  .ficha { padding: 28px 20px 24px; }
+  .ficha-nombre { font-size: 28px; }
+}
