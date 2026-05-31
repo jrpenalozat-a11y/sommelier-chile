@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { REGIONES, VINAS, CEPAS } from './data/vinas-chile-datos.js';
+// Importa el archivo de datos directamente desde la raíz del proyecto,
+// de modo que al editar vinas-chile-datos.js la app se actualice sola.
+import { REGIONES, VINAS, CEPAS } from '../vinas-chile-datos.js';
 import MapaChile from './components/MapaChile.jsx';
 import PanelValles from './components/PanelValles.jsx';
 import ListaVinas from './components/ListaVinas.jsx';
