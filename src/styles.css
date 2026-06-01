@@ -230,16 +230,23 @@ body {
   font-size: 18px;
 }
 
-/* Zonas: hover y activa */
-.mapa-zona { transition: filter 0.2s ease; }
-.mapa-zona:hover { filter: brightness(1.13) saturate(1.06); }
-.mapa-zona.activa { filter: brightness(1.18) saturate(1.1) drop-shadow(0 0 3px rgba(201, 162, 75, 0.8)); }
+/* Zonas: hover y activa (brillo simple, sin drop-shadow ni transición:
+   evita re-rasterizar el archipiélago y mantiene fluido el toque en móvil) */
+.mapa-zona { cursor: pointer; }
+.mapa-zona:hover { filter: brightness(1.1) saturate(1.05); }
+.mapa-zona.activa { filter: brightness(1.14) saturate(1.08); }
 
-/* Pines de valle */
+/* Pines de valle (siempre visibles); etiquetas y conectores solo en zona
+   activa o al pasar el pin, para no saturar el mapa */
 .mapa-vhalo { fill: var(--dorado-claro); opacity: 0.45; transition: opacity 0.2s ease; }
 .mapa-vpin { fill: var(--dorado); stroke: #7a5a16; stroke-width: 0.8; }
-.mapa-vcnx { stroke: var(--dorado); stroke-width: 1; opacity: 0.65; }
-.mapa-vlabel { font-family: var(--serif); font-style: italic; fill: #5d4a4f; }
+.mapa-vcnx { stroke: var(--dorado); stroke-width: 1; opacity: 0; transition: opacity 0.2s ease; }
+.mapa-vlabel { font-family: var(--serif); font-style: italic; fill: #5d4a4f; opacity: 0; transition: opacity 0.2s ease; }
+.mapa-pin-g.activa .mapa-vcnx,
+.mapa-pin-g:hover .mapa-vcnx { opacity: 0.65; }
+.mapa-pin-g.activa .mapa-vlabel,
+.mapa-pin-g:hover .mapa-vlabel { opacity: 1; }
+.mapa-pin-g.activa .mapa-vhalo,
 .mapa-pin-g:hover .mapa-vhalo { opacity: 0.85; }
 .mapa-pin-g:hover .mapa-vlabel { fill: var(--vino); }
 

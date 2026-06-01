@@ -177,7 +177,7 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
               if (!b) return;
               mx = b.x + b.width * 0.5; my = b.y + b.height * pos.f;
             }
-            const g = el('g', { class: 'mapa-pin-g' }, ann);
+            const g = el('g', { class: 'mapa-pin-g', 'data-zona': reg.id }, ann);
             g.style.cursor = 'pointer';
             g.addEventListener('click', (ev) => { ev.stopPropagation(); cb.current.onSelectValle(reg.id, valle); });
             el('line', { x1: gutterX + padL * 0.45, y1: my, x2: mx, y2: my, class: 'mapa-vcnx' }, g);
@@ -251,6 +251,10 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
       map[zonaId].forEach((node) => {
         node.classList.toggle('activa', zonaId === activa);
       });
+    });
+    // Mostrar las etiquetas de valle solo de la zona activa
+    svg.querySelectorAll('.mapa-pin-g').forEach((g) => {
+      g.classList.toggle('activa', g.dataset.zona === activa);
     });
   }
 
