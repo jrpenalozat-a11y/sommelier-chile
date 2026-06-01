@@ -16,8 +16,8 @@ export const REGIONES = [
     nombre: "Atacama",
     lat: -27.5,
     lng: -70.3,
-    descripcion: "Viticultura de extremo norte, dominada históricamente por la producción pisquera. Clima desértico con gran amplitud térmica.",
-    valles: ["Copiapó", "Huasco"],
+    descripcion: "Viticultura de extremo norte, dominada históricamente por la producción pisquera. Hoy también cuna de la viticultura más extrema del país: vinos de altura y 'vino del desierto'.",
+    valles: ["Atacama"],
   },
   {
     id: "coquimbo",
@@ -48,13 +48,164 @@ export const REGIONES = [
     nombre: "Sur",
     lat: -37.5,
     lng: -72.3,
-    descripcion: "Viticultura patrimonial y de secano. Cepas tradicionales como País y Cinsault en viñedos centenarios, junto a nuevos blancos de clima frío.",
-    valles: ["Itata", "Biobío", "Malleco"],
+    descripcion: "Viticultura patrimonial y de secano. Cepas tradicionales como País y Cinsault en viñedos centenarios, junto a nuevos blancos de clima frío y la frontera austral de la Patagonia.",
+    valles: ["Itata", "Biobío", "Malleco", "Osorno / Región Austral"],
+  },
+];
+
+// Ficha detallada de cada valle: clima, suelos, cepas estrella, carácter y dato clave
+export const VALLES = [
+  {
+    nombre: "Atacama", region: "atacama",
+    clima: "Desértico extremo, el más árido del mundo. Radiación solar altísima, casi sin lluvias, gran amplitud térmica. Viñedos de altura (algunos sobre 2.000 msnm) y otros bajo la niebla costera (camanchaca).",
+    suelos: "Salinos, pedregosos y muy pobres, de origen volcánico y aluvial.",
+    cepas: ["Syrah", "Cabernet Sauvignon", "Tamarugal", "uvas pisqueras", "cepas de altura"],
+    caracter: "Viticultura heroica y de nicho. Vinos de carácter único, con salinidad y mineralidad marcadas por el desierto. Producciones pequeñas y artesanales.",
+    dato: "Región vitícola reconocida oficialmente (valles de Copiapó y Huasco). Aquí se hace 'vino del desierto' en uno de los entornos más inhóspitos del planeta.",
+  },
+  {
+    nombre: "Elqui", region: "coquimbo",
+    clima: "Semidesértico con cielos extremadamente limpios (por eso sus observatorios astronómicos). Gran amplitud térmica entre día y noche y viñedos plantados en altura, algunos sobre los 2.000 msnm.",
+    suelos: "Pedregosos, de origen aluvial y coluvial en quebradas estrechas entre montañas.",
+    cepas: ["Syrah", "Carménère", "Sauvignon Blanc", "Pedro Ximénez (pisco)"],
+    caracter: "Históricamente tierra de pisco. Hoy famoso por Syrah de altura de clima frío: especiados, frescos, con gran color y notas minerales y de aceituna.",
+    dato: "Es uno de los viñedos más septentrionales (al norte) de Chile capaces de dar vino fino.",
+  },
+  {
+    nombre: "Limarí", region: "coquimbo",
+    clima: "Semiárido pero atemperado por la camanchaca (niebla costera) y la corriente fría de Humboldt. Muy poca lluvia.",
+    suelos: "Únicos en Chile por su alto contenido de carbonato de calcio (caliza), que aporta mineralidad.",
+    cepas: ["Chardonnay", "Sauvignon Blanc", "Syrah", "Pinot Noir"],
+    caracter: "Reconocido por blancos minerales y tensos, especialmente Chardonnay, comparables a los de Borgoña. Syrah elegante y fresco.",
+    dato: "El suelo calcáreo, raro en Chile, es su gran sello distintivo.",
+  },
+  {
+    nombre: "Choapa", region: "coquimbo",
+    clima: "El valle más angosto de Chile, entre montañas. Cálido y seco, sin influencia costera directa.",
+    suelos: "Aluviales y pedregosos en una franja muy estrecha.",
+    cepas: ["Syrah", "Cabernet Sauvignon"],
+    caracter: "Producción pequeña y de nicho; tintos concentrados de Syrah y Cabernet.",
+    dato: "Es la región vitícola más pequeña del país.",
+  },
+  {
+    nombre: "Aconcagua", region: "aconcagua",
+    clima: "Mediterráneo cálido y seco en el interior (junto al río Aconcagua), con veranos calurosos; sectores costeros (Aconcagua Costa) mucho más frescos.",
+    suelos: "Coluviales y aluviales, con presencia de granito en las laderas.",
+    cepas: ["Cabernet Sauvignon", "Syrah", "Carménère", "Chardonnay (costa)"],
+    caracter: "Cuna de grandes tintos de guarda chilenos (Cabernet y ensamblajes bordeleses potentes y elegantes). La zona costera da blancos y Syrah frescos.",
+    dato: "Aquí está la cuna de íconos como Don Maximiano, Seña y Viñedo Chadwick.",
+  },
+  {
+    nombre: "Casablanca", region: "aconcagua",
+    clima: "Frío costero, con neblinas matinales (influencia del Pacífico) y días soleados. Riesgo de heladas en las zonas bajas. Temperatura media que rara vez supera los 24 °C.",
+    suelos: "Arcillosos y de origen granítico (descomposición de la Cordillera de la Costa), pobres en materia orgánica, con buen drenaje.",
+    cepas: ["Chardonnay", "Sauvignon Blanc", "Pinot Noir", "Syrah (clima frío)"],
+    caracter: "El valle blanco por excelencia de Chile y hoy el mayor productor de Chardonnay del país. Blancos frescos, frutales y minerales; Pinot Noir y Syrah elegantes.",
+    dato: "Descubierto en 1980 por el enólogo Pablo Morandé, que vio su potencial para uvas blancas. Marcó el inicio de la viticultura de clima frío en Chile.",
+  },
+  {
+    nombre: "San Antonio / Leyda", region: "aconcagua",
+    clima: "Frío costero extremo, a pocos kilómetros del mar. Fuerte influencia oceánica y vientos; aún más frío que Casablanca.",
+    suelos: "Graníticos y de origen marino, con presencia de arcilla.",
+    cepas: ["Sauvignon Blanc", "Pinot Noir", "Chardonnay", "Syrah (clima frío)"],
+    caracter: "Sauvignon Blanc muy salinos y cítricos, de los mejores de Chile; Pinot Noir frescos y elegantes. Leyda es su subzona estrella.",
+    dato: "Define el estilo 'costero' chileno: salinidad y mineralidad por la cercanía al Pacífico.",
+  },
+  {
+    nombre: "Maipo", region: "valle-central",
+    clima: "Mediterráneo cálido y seco. El Maipo Alto (Puente Alto, Pirque, al pie de los Andes) es más fresco de noche, ideal para Cabernet de guarda.",
+    suelos: "Aluviales y pedregosos, especialmente en el Maipo Alto, con buen drenaje.",
+    cepas: ["Cabernet Sauvignon", "Carménère", "Merlot"],
+    caracter: "La cuna histórica del vino chileno y el hogar del gran Cabernet Sauvignon: estructurado, con cassis, menta y notas terrosas. Considerado el 'Burdeos de Sudamérica'.",
+    dato: "El Maipo Alto produce los Cabernet más prestigiosos del país (Don Melchor, Almaviva, Viñedo Chadwick).",
+  },
+  {
+    nombre: "Cachapoal", region: "valle-central",
+    clima: "Cálido y mediterráneo. El sector andino (Cachapoal Andes) tiene buena radiación y noches frescas.",
+    suelos: "Aluviales y coluviales al pie de la cordillera.",
+    cepas: ["Carménère", "Cabernet Sauvignon", "Syrah", "Merlot"],
+    caracter: "Tintos cálidos y maduros, con muy buen Carménère y Cabernet del sector andino. Forma parte del gran Valle de Rapel junto a Colchagua.",
+    dato: "El Cachapoal Andes se ha ganado fama por tintos de montaña de gran concentración.",
+  },
+  {
+    nombre: "Colchagua", region: "valle-central",
+    clima: "Mediterráneo cálido y soleado, atemperado hacia la costa (Paredones, Lolol) y con noches frescas en los sectores andinos (Los Lingues, Apalta).",
+    suelos: "Variados: aluviales en el valle, graníticos en las laderas de Apalta, arcillosos hacia la costa.",
+    cepas: ["Carménère", "Cabernet Sauvignon", "Syrah", "Malbec"],
+    caracter: "El valle tinto más famoso de Chile internacionalmente. Carménère y Cabernet potentes, maduros y de gran cuerpo. Apalta es su 'gran cru'.",
+    dato: "El anfiteatro de Apalta, con laderas graníticas, es uno de los terroirs más célebres de Sudamérica (Clos Apalta, Montes Alpha M, Purple Angel).",
+  },
+  {
+    nombre: "Curicó", region: "valle-central",
+    clima: "Mediterráneo templado, con buena pluviometría. Uno de los valles con más tradición y volumen.",
+    suelos: "Aluviales, profundos y fértiles, en el corazón del Valle Central.",
+    cepas: ["Cabernet Sauvignon", "Sauvignon Blanc", "Carménère"],
+    caracter: "Valle versátil y productivo, con tintos y blancos de buena relación precio-calidad. Larga tradición vitivinícola.",
+    dato: "Aquí Miguel Torres introdujo en 1979 el acero inoxidable y el frío, modernizando el vino chileno.",
+  },
+  {
+    nombre: "Maule", region: "valle-central",
+    clima: "Mediterráneo con mayor pluviometría que los valles del norte. El secano interior, sin riego, depende de la lluvia.",
+    suelos: "Arcillosos y graníticos; el secano tiene viñedos viejos de parras en cabeza (sin espaldera).",
+    cepas: ["Carignan", "País", "Cabernet Sauvignon", "Cinsault", "Cabernet Franc"],
+    caracter: "El valle más extenso y patrimonial del Valle Central. Renacimiento de tintos de secano de parras viejas: Carignan intenso y País jugoso.",
+    dato: "Cuna del sello VIGNO (Vignadores de Carignan), que reúne Carignan de secano de parras de al menos 30 años.",
+  },
+  {
+    nombre: "Itata", region: "sur",
+    clima: "Frío y lluvioso, con influencia costera. Viticultura de secano tradicional, sin riego.",
+    suelos: "Graníticos (rojos) en cerros, con parras viejas plantadas en cabeza.",
+    cepas: ["País", "Cinsault", "Moscatel"],
+    caracter: "Viticultura patrimonial centenaria. Renacimiento del vino fino con Cinsault jugosos y ligeros, País rústico y Moscatel aromático.",
+    dato: "Uno de los viñedos más antiguos de Chile; aquí llegaron las primeras parras en el siglo XVI.",
+  },
+  {
+    nombre: "Biobío", region: "sur",
+    clima: "Frío, ventoso y lluvioso (cerca de 1.100 mm anuales), incluso en verano. Clima ideal para cepas de clima frío con maduración lenta.",
+    suelos: "Arenosos y pedregosos, fértiles por los depósitos fluviales del río Biobío.",
+    cepas: ["Pinot Noir", "Chardonnay", "Riesling", "Sauvignon Blanc", "Gewürztraminer"],
+    caracter: "Frontera de la viticultura de clima frío. Blancos aromáticos de gran acidez (Riesling, Gewürztraminer) y Pinot Noir frescos.",
+    dato: "Aquí se hizo el primer Riesling de Chile con denominación de origen del valle (Cono Sur).",
+  },
+  {
+    nombre: "Malleco", region: "sur",
+    clima: "Muy frío y lluvioso, la frontera sur de la viticultura fina chilena (hasta los ~40° de latitud).",
+    suelos: "Rojos, arcillosos, de origen volcánico.",
+    cepas: ["Chardonnay", "Pinot Noir"],
+    caracter: "Producción minúscula pero de culto. Chardonnay y Pinot Noir muy frescos, tensos y de gran acidez, al estilo de climas fríos del viejo mundo.",
+    dato: "El Chardonnay 'Sol de Sol' de Viña Aquitania fue pionero del vino fino en este extremo sur.",
+  },
+  {
+    nombre: "Osorno / Región Austral", region: "sur",
+    clima: "Patagonia chilena: frío, lluvioso y ventoso, con influencia de lagos y de los Andes. La frontera más austral de la viticultura chilena, donde nada está garantizado (heladas, lluvias intensas, vientos fuertes).",
+    suelos: "Trumao: ceniza volcánica con alta retención de agua.",
+    cepas: ["Sauvignon Blanc", "Chardonnay", "Pinot Noir", "Riesling"],
+    caracter: "Viticultura extrema del sur profundo. Blancos muy frescos, filosos y minerales, de altísima acidez; Pinot Noir delicados con aromas de bosque patagónico. Vinos que 'gritan' clima frío.",
+    dato: "Casa Silva plantó aquí, junto al Lago Ranco, el primer viñedo de la Patagonia chilena (2006). Lleva la denominación Región Austral.",
   },
 ];
 
 // Cada viña: nombre, valle, región, fundación (aprox), terruño, cepas, descripción, vinos destacados
 export const VINAS = [
+  // ───────── ATACAMA (viticultura extrema del norte) ─────────
+  {
+    nombre: "Ayllu (Cooperativa Lickanantay)",
+    region: "atacama", valle: "Atacama",
+    terruno: "Toconao, cerca de San Pedro de Atacama, con viñedos entre 2.400 y 3.200 msnm, de los más altos del mundo. Desierto de altura con radiación extrema y enorme amplitud térmica.",
+    cepas: ["Tinta (ensamblaje)", "uvas de altura"],
+    descripcion: "Uno de los proyectos de vinos de altura más emblemáticos de Chile, elaborado de forma artesanal por la Cooperativa Lickanantay, formada por pequeños viticultores de comunidades atacameñas. Cosecha manual conservando tradiciones milenarias. Vinos de salinidad y mineralidad muy distintivas, con estilo rústico.",
+    destacados: ["Ayllu Blanco", "Ayllu Naranjo", "Ayllu Tinto", "Ayllu Rosé"],
+    estilo: "Vino de altura extrema, artesanal e indígena", segmento: "Nicho / de culto",
+  },
+  {
+    nombre: "Vino del Desierto (U. Arturo Prat)",
+    region: "atacama", valle: "Atacama",
+    terruno: "La Huayca y Pintados, región de Tarapacá, en pleno desierto de Atacama, el más árido del mundo. Suelos salinos, viento, polvo y radiación solar extrema, con muy poca agua.",
+    cepas: ["Tamarugal", "Syrah", "uvas resistentes al desierto"],
+    descripcion: "Proyecto pionero del 'vino del desierto'. Usa la cepa Tamarugal, descubierta en 2003 por la académica Ingrid Poblete, que sobrevivió casi un siglo a la intemperie sin cuidados, desarrollando una adaptación única al clima inhóspito. Viticultura heroica contra todo pronóstico.",
+    destacados: ["Vino del Desierto Tamarugal"],
+    estilo: "Viticultura heroica del desierto", segmento: "Nicho / experimental",
+  },
   // ───────── COQUIMBO ─────────
   {
     nombre: "Viña Falernia",
@@ -63,6 +214,7 @@ export const VINAS = [
     cepas: ["Syrah", "Carménère", "Sauvignon Blanc", "Pedro Ximénez"],
     descripcion: "Pionera del vino en el Elqui, fundada por la familia Olivier junto a inmigrantes italianos. Reconocida por sus Syrah de clima frío de altura.",
     destacados: ["Syrah Reserva", "Carménère Reserva"],
+    estilo: "Pionera de valle, escala media", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Tabalí",
@@ -71,6 +223,7 @@ export const VINAS = [
     cepas: ["Chardonnay", "Sauvignon Blanc", "Syrah", "Pinot Noir"],
     descripcion: "Viña emblema del Limarí, famosa por sus blancos minerales sobre suelo de caliza, comparables a los de clima frío del viejo mundo.",
     destacados: ["Talinay Chardonnay", "Talinay Pinot Noir"],
+    estilo: "Premium de terruño", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Maycas del Limarí",
@@ -79,6 +232,7 @@ export const VINAS = [
     cepas: ["Chardonnay", "Syrah", "Sauvignon Blanc"],
     descripcion: "Proyecto enfocado en expresar la mineralidad del Limarí, con Chardonnay de gran tensión y Syrah elegante.",
     destacados: ["Quebrada Seca Chardonnay", "Reserva Especial Syrah"],
+    estilo: "Premium de terruño", segmento: "Reserva a premium",
   },
 
   // ───────── ACONCAGUA ─────────
@@ -89,6 +243,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Syrah", "Chardonnay", "Sauvignon Blanc"],
     descripcion: "Fundada en 1870 por Maximiano Errázuriz. Una de las viñas más prestigiosas de Chile, célebre por el 'Berlin Tasting' de 2004 donde sus vinos vencieron a grandes de Burdeos y la Toscana.",
     destacados: ["Don Maximiano Founder's Reserve", "Kai", "Viñedo Chadwick"],
+    estilo: "Tradicional histórica, premium", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Seña",
@@ -97,6 +252,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Malbec", "Petit Verdot"],
     descripcion: "Ícono nacido de la asociación entre Eduardo Chadwick (Errázuriz) y Robert Mondavi. Ensamblaje bordelés de culto, referente del vino premium chileno.",
     destacados: ["Seña"],
+    estilo: "Ícono, biodinámica", segmento: "Ícono (alta gama)",
   },
   {
     nombre: "Viña Von Siebenthal",
@@ -105,6 +261,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Petit Verdot", "Cabernet Franc"],
     descripcion: "Proyecto boutique del suizo Mauro von Siebenthal, reconocido por tintos de guarda de gran estructura.",
     destacados: ["Montelìg", "Carabantes", "Toknar Petit Verdot"],
+    estilo: "Boutique de autor", segmento: "Premium a ícono",
   },
   {
     nombre: "Viña Casas del Bosque",
@@ -113,6 +270,7 @@ export const VINAS = [
     cepas: ["Sauvignon Blanc", "Pinot Noir", "Chardonnay", "Syrah"],
     descripcion: "Una de las viñas líderes de Casablanca, especializada en blancos aromáticos y Pinot Noir de clima frío.",
     destacados: ["Pequeñas Producciones Sauvignon Blanc", "Pinot Noir Reserva"],
+    estilo: "Premium de clima frío", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Kingston Family",
@@ -121,6 +279,7 @@ export const VINAS = [
     cepas: ["Pinot Noir", "Syrah", "Sauvignon Blanc"],
     descripcion: "Viña familiar boutique célebre por sus Pinot Noir y Syrah de clima frío de gran finura.",
     destacados: ["Alazán Pinot Noir", "Lucero Syrah"],
+    estilo: "Boutique familiar", segmento: "Premium",
   },
   {
     nombre: "Viña Matetic",
@@ -129,6 +288,7 @@ export const VINAS = [
     cepas: ["Syrah", "Sauvignon Blanc", "Pinot Noir", "Chardonnay"],
     descripcion: "Pionera del Syrah de clima frío en Chile, con viticultura biodinámica certificada. Referente de elegancia costera.",
     destacados: ["EQ Syrah", "EQ Coastal Sauvignon Blanc"],
+    estilo: "Boutique biodinámica", segmento: "Premium a ícono",
   },
   {
     nombre: "Viña Leyda",
@@ -137,6 +297,7 @@ export const VINAS = [
     cepas: ["Sauvignon Blanc", "Pinot Noir", "Chardonnay"],
     descripcion: "La viña que dio identidad al valle de Leyda. Sus Sauvignon Blanc salinos y Pinot Noir frescos definieron el estilo costero chileno.",
     destacados: ["Lot 21 Pinot Noir", "Garuma Sauvignon Blanc"],
+    estilo: "Especialista de clima frío", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Garcés Silva (Amayna)",
@@ -145,6 +306,7 @@ export const VINAS = [
     cepas: ["Sauvignon Blanc", "Chardonnay", "Pinot Noir"],
     descripcion: "Proyecto de alta gama de la familia Garcés Silva, con blancos de gran complejidad bajo la marca Amayna.",
     destacados: ["Amayna Sauvignon Blanc", "Amayna Chardonnay"],
+    estilo: "Premium de clima frío", segmento: "Premium",
   },
 
   // ───────── VALLE CENTRAL · MAIPO ─────────
@@ -155,6 +317,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Chardonnay", "Sauvignon Blanc"],
     descripcion: "Fundada en 1883, la mayor productora de vino de Chile y una de las más grandes del mundo. Casa del icónico Don Melchor y de Casillero del Diablo.",
     destacados: ["Don Melchor", "Casillero del Diablo", "Marqués de Casa Concha"],
+    estilo: "Gran escala, todos los segmentos", segmento: "Masivo a ícono",
   },
   {
     nombre: "Viña Santa Rita",
@@ -163,6 +326,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Sauvignon Blanc", "Chardonnay"],
     descripcion: "Fundada en 1880, viña histórica ligada a la independencia de Chile (los '120' de Manuel Rodríguez). Gran portafolio desde el clásico '120' hasta íconos.",
     destacados: ["Casa Real Reserva Especial", "Triple C", "Medalla Real"],
+    estilo: "Tradicional histórica, gran escala", segmento: "Masivo a ícono",
   },
   {
     nombre: "Viña Cousiño Macul",
@@ -171,6 +335,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Merlot", "Chardonnay"],
     descripcion: "Fundada en 1856, la viña familiar más antigua de Chile bajo la misma familia. Tradición y elegancia clásica del Maipo.",
     destacados: ["Lota", "Finis Terrae", "Antiguas Reservas"],
+    estilo: "Tradicional familiar histórica", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Santa Carolina",
@@ -179,6 +344,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Chardonnay"],
     descripcion: "Fundada en 1875, con bodega patrimonial declarada Monumento Nacional. Larga tradición en tintos del Valle Central.",
     destacados: ["Herencia Carménère", "VSC", "Reserva de Familia"],
+    estilo: "Tradicional histórica, gran escala", segmento: "Masivo a ícono",
   },
   {
     nombre: "Viña Carmen",
@@ -187,6 +353,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Sauvignon Blanc"],
     descripcion: "La marca de vino más antigua de Chile (1850). Históricamente importante por la reidentificación del Carménère en 1994.",
     destacados: ["Gold Reserve", "Carmen Insigne"],
+    estilo: "Tradicional histórica", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Almaviva",
@@ -195,6 +362,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Cabernet Franc", "Petit Verdot"],
     descripcion: "Joint venture entre Concha y Toro y Baron Philippe de Rothschild (Mouton). Primer gran ícono franco-chileno, ensamblaje bordelés de culto.",
     destacados: ["Almaviva"],
+    estilo: "Ícono franco-chileno", segmento: "Ícono (alta gama)",
   },
   {
     nombre: "Viña Haras de Pirque",
@@ -203,6 +371,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Chardonnay"],
     descripcion: "Viña con arquitectura singular en forma de herradura (su origen es un haras de caballos). Tintos elegantes del Maipo Alto.",
     destacados: ["Albis", "Character"],
+    estilo: "Premium de terruño", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Pérez Cruz",
@@ -211,6 +380,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Syrah", "Carménère", "Petit Verdot"],
     descripcion: "Viña boutique familiar reconocida por tintos potentes y bien estructurados del Maipo Alto.",
     destacados: ["Liguai", "Quelen", "Cabernet Sauvignon Reserva"],
+    estilo: "Boutique familiar", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Aquitania",
@@ -219,6 +389,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Chardonnay"],
     descripcion: "Proyecto fundado por enólogos de renombre (Bruno Prats, Paul Pontallier, Felipe de Solminihac). Cabernet de gran tipicidad andina.",
     destacados: ["Lazuli", "SoldeSol Chardonnay"],
+    estilo: "Boutique de autor", segmento: "Premium a ícono",
   },
 
   // ───────── VALLE CENTRAL · CACHAPOAL ─────────
@@ -229,6 +400,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Syrah", "Carménère"],
     descripcion: "Proyecto de alta gama enfocado en tintos de montaña del Cachapoal Andes.",
     destacados: ["Altaïr", "Sideral"],
+    estilo: "Premium de terruño", segmento: "Premium a ícono",
   },
   {
     nombre: "Viña Anakena",
@@ -237,6 +409,7 @@ export const VINAS = [
     cepas: ["Carménère", "Syrah", "Viognier", "Cabernet Sauvignon"],
     descripcion: "Viña reconocida por pionera en Viognier en Chile y por sus tintos del Cachapoal.",
     destacados: [" ONA", "Enco", "Single Vineyard"],
+    estilo: "Escala media, innovadora", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Morandé",
@@ -245,6 +418,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Sauvignon", "Sauvignon Blanc"],
     descripcion: "Fundada por Pablo Morandé, innovador clave de Casablanca. Reconocida por su línea House of Morandé y vinos de terroir.",
     destacados: ["House of Morandé", "Edición Limitada"],
+    estilo: "Innovadora de terruño", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Château Los Boldos",
@@ -253,6 +427,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Merlot"],
     descripcion: "Viña de tradición francesa en el Cachapoal, con tintos de guarda de buena concentración.",
     destacados: ["Grand Cru", "Tradition Reserve"],
+    estilo: "Tradición francesa", segmento: "Reserva a premium",
   },
 
   // ───────── VALLE CENTRAL · COLCHAGUA ─────────
@@ -263,6 +438,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Syrah", "Sauvignon Blanc"],
     descripcion: "Fundada en 1988 por Aurelio Montes. Una de las viñas que internacionalizó el vino chileno premium. Famosa por Montes Alpha y sus íconos de Apalta.",
     destacados: ["Montes Alpha M", "Purple Angel", "Folly"],
+    estilo: "Premium internacional", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Lapostolle",
@@ -271,6 +447,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Sauvignon", "Merlot", "Syrah"],
     descripcion: "Fundada por la familia Marnier-Lapostolle (Grand Marnier). Su Clos Apalta es uno de los íconos más premiados de Chile.",
     destacados: ["Clos Apalta", "Cuvée Alexandre"],
+    estilo: "Ícono, biodinámica", segmento: "Premium a ícono",
   },
   {
     nombre: "Viña Casa Lapostolle",
@@ -279,6 +456,7 @@ export const VINAS = [
     cepas: ["Carménère", "Merlot", "Cabernet Sauvignon"],
     descripcion: "Línea de la casa Lapostolle, reconocida por Carménère de gran expresión de Apalta.",
     destacados: ["Borobo", "Cuvée Alexandre Carménère"],
+    estilo: "Premium de terruño", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Viu Manent",
@@ -287,6 +465,7 @@ export const VINAS = [
     cepas: ["Malbec", "Cabernet Sauvignon", "Carménère"],
     descripcion: "Viña familiar famosa por rescatar el Malbec chileno de parras viejas. Gran tradición en Colchagua.",
     destacados: ["Viu 1", "Single Vineyard Malbec San Carlos", "El Incidente"],
+    estilo: "Tradicional familiar", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Santa Cruz",
@@ -295,6 +474,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Sauvignon", "Syrah"],
     descripcion: "Viña con fuerte componente turístico (teleférico, observatorio). Tintos cálidos de Colchagua.",
     destacados: ["Chamán", "Reserva"],
+    estilo: "Turística, escala media", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Casa Silva",
@@ -303,6 +483,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Sauvignon", "Syrah", "Petit Verdot"],
     descripcion: "Viña familiar histórica de Colchagua, con bodega patrimonial. Reconocida por Carménère y por su línea Microterroir.",
     destacados: ["Microterroir Carménère", "Quinta Generación", "Altura"],
+    estilo: "Tradicional familiar histórica", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Los Vascos",
@@ -311,6 +492,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Syrah"],
     descripcion: "Propiedad de Domaines Barons de Rothschild (Lafite) en Chile. Cabernet de estilo bordelés.",
     destacados: ["Le Dix", "Grande Réserve"],
+    estilo: "Premium (Rothschild/Lafite)", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña MontGras",
@@ -319,6 +501,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Syrah"],
     descripcion: "Viña reconocida por el cerro Ninquén, viñedo de ladera plantado en altura. Tintos modernos y consistentes.",
     destacados: ["Ninquén", "Antu", "Quatro"],
+    estilo: "Escala media, de terruño", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Emiliana",
@@ -327,6 +510,7 @@ export const VINAS = [
     cepas: ["Carménère", "Syrah", "Cabernet Sauvignon", "Chardonnay"],
     descripcion: "Líder mundial en vinos orgánicos y biodinámicos. Su ícono Coyam es referente de la viticultura sustentable chilena.",
     destacados: ["Gê", "Coyam", "Signos de Origen"],
+    estilo: "Orgánica y biodinámica líder", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Neyen",
@@ -335,6 +519,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Sauvignon"],
     descripcion: "Proyecto enfocado en un solo gran ensamblaje de Apalta a partir de viñas viejas.",
     destacados: ["Neyen", "Espíritu de Apalta"],
+    estilo: "Boutique de un solo vino", segmento: "Ícono (alta gama)",
   },
 
   // ───────── VALLE CENTRAL · CURICÓ ─────────
@@ -345,6 +530,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Sauvignon Blanc", "Carménère"],
     descripcion: "Fundada en 1865, una de las viñas más grandes y antiguas de Chile. Casa de marcas masivas (Gato Negro, 35 Sur) e íconos.",
     destacados: ["Cabo de Hornos", "1865 Single Vineyard", "Tierras Moradas"],
+    estilo: "Gran escala, todos los segmentos", segmento: "Masivo a ícono",
   },
   {
     nombre: "Viña Miguel Torres",
@@ -353,6 +539,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Sauvignon Blanc", "País", "Syrah"],
     descripcion: "Filial chilena de la casa catalana Torres, que en 1979 introdujo tecnología moderna (acero inoxidable, frío) revolucionando el vino chileno. Pionera del espumante de País.",
     destacados: ["Manso de Velasco", "Conde de Superunda", "Estelado (País espumante)"],
+    estilo: "Tradicional, pionera técnica", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Echeverría",
@@ -361,6 +548,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Sauvignon Blanc", "Chardonnay"],
     descripcion: "Viña familiar de Curicó con larga trayectoria en tintos y blancos de buena relación precio-calidad.",
     destacados: ["Family Reserve", "No Es Pituko"],
+    estilo: "Boutique familiar", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Valdivieso",
@@ -369,6 +557,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Pinot Noir", "Chardonnay", "varias (espumantes)"],
     descripcion: "Fundada en 1879, pionera y líder histórica del vino espumante en Chile. Su ícono Caballo Loco es un ensamblaje multi-añada único.",
     destacados: ["Caballo Loco", "Éclat", "Brut espumante"],
+    estilo: "Tradicional, especialista en espumante", segmento: "Masivo a ícono",
   },
 
   // ───────── VALLE CENTRAL · MAULE ─────────
@@ -379,6 +568,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Franc", "Merlot"],
     descripcion: "Viña boutique del Maule reconocida por tintos de carácter y por su trabajo con Cabernet Franc.",
     destacados: ["Hacedor de Mundos", "Cobre"],
+    estilo: "Boutique de autor", segmento: "Premium",
   },
   {
     nombre: "Viña J. Bouchon",
@@ -387,6 +577,7 @@ export const VINAS = [
     cepas: ["País", "Cabernet Sauvignon", "Sauvignon Blanc", "Carménère"],
     descripcion: "Viña familiar pionera en revalorizar el País de parras viejas, incluyendo el singular 'País Salvaje' que crece trepado en árboles.",
     destacados: ["País Salvaje", "Las Mercedes", "Granito"],
+    estilo: "Familiar, rescate patrimonial", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Gen del Alma / De Martino (Maule)",
@@ -395,6 +586,7 @@ export const VINAS = [
     cepas: ["País", "Cinsault", "Carignan"],
     descripcion: "De Martino fue pionera en rescatar viñedos viejos del Maule y en vinos de ánforas. Referente del Carignan y País del secano.",
     destacados: ["Viejas Tinajas", "Gallardía", "Single Vineyard"],
+    estilo: "Boutique de vino natural", segmento: "Premium",
   },
   {
     nombre: "Viña Casa Donoso",
@@ -403,6 +595,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Merlot"],
     descripcion: "Viña tradicional del Maule con casona patrimonial y tintos clásicos del valle.",
     destacados: ["Reserva de Familia", "Clos Centenaire"],
+    estilo: "Tradicional familiar", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Balduzzi",
@@ -411,6 +604,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Chardonnay"],
     descripcion: "Viña familiar de origen italiano con larga tradición en el Maule.",
     destacados: ["Reserva", "Gran Reserva"],
+    estilo: "Tradicional familiar", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Terranoble",
@@ -419,6 +613,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Sauvignon", "Malbec"],
     descripcion: "Viña especializada en Carménère, con su línea CA. que compara Carménère de los Andes vs. costa.",
     destacados: ["CA1 / CA2 Carménère", "Lahuén", "Gran Reserva"],
+    estilo: "Especialista en Carménère", segmento: "Reserva a premium",
   },
 
   // ───────── SUR · ITATA ─────────
@@ -429,6 +624,7 @@ export const VINAS = [
     cepas: ["Pinot Noir", "Chardonnay", "Syrah"],
     descripcion: "Proyecto del sur enfocado en cepas de clima frío con identidad sureña.",
     destacados: ["Los Patricios", "Alma de Itata"],
+    estilo: "Boutique de clima frío", segmento: "Premium",
   },
   {
     nombre: "Viña Casa del Bosque / Cacique Maravilla",
@@ -437,6 +633,7 @@ export const VINAS = [
     cepas: ["País", "Moscatel", "Cinsault"],
     descripcion: "Viticultura patrimonial del Itata con uno de los viñedos de País más antiguos en producción de Chile.",
     destacados: ["Gran Reserva País", "Pipeño"],
+    estilo: "Patrimonial de secano", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Rogue Vine / De Itata",
@@ -445,6 +642,7 @@ export const VINAS = [
     cepas: ["Cinsault", "País", "Moscatel"],
     descripcion: "Proyecto que ayudó a poner al Itata en el mapa del vino fino, con Cinsault y País de viñas viejas.",
     destacados: ["Grand Itata", "Pipeño"],
+    estilo: "Boutique de vino fino de secano", segmento: "Premium",
   },
 
   // ───────── SUR · BIOBÍO ─────────
@@ -455,6 +653,7 @@ export const VINAS = [
     cepas: ["Pinot Noir", "Chardonnay"],
     descripcion: "Proyecto del grupo VSPT enfocado en Pinot Noir y Chardonnay de clima frío del sur.",
     destacados: ["Veranda Pinot Noir", "Veranda Chardonnay"],
+    estilo: "Premium de clima frío", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Agustinos",
@@ -463,6 +662,16 @@ export const VINAS = [
     cepas: ["Pinot Noir", "Chardonnay", "Sauvignon Blanc"],
     descripcion: "Viña del Biobío especializada en blancos frescos y Pinot Noir de clima frío.",
     destacados: ["Gran Reserva Pinot Noir"],
+    estilo: "Especialista de clima frío", segmento: "Reserva a premium",
+  },
+  {
+    nombre: "Viña Cono Sur",
+    region: "sur", valle: "Biobío",
+    terruno: "Finca austral en Mulchén, Biobío, con suelos profundos de arcilla en la ribera sur del río Biobío; clima frío y ventoso. Opera además en Casablanca, Maipo y Rapel.",
+    cepas: ["Riesling", "Pinot Noir", "Chardonnay", "Gewürztraminer", "Viognier"],
+    descripcion: "Fundada por Concha y Toro en 1993, con foco en Pinot Noir y blancos aromáticos. Fue la primera viña de Chile en producir y exportar Viognier, y la primera en etiquetar un Riesling con la denominación de origen Valle del Biobío. Su finca de Mulchén tiene viñedos de Riesling plantados desde 1986.",
+    destacados: ["Ocio Pinot Noir", "20 Barrels", "Bicicleta Riesling", "Reserva Especial Riesling"],
+    estilo: "Gran escala, innovadora sustentable", segmento: "Masivo a ícono",
   },
 
   // ───────── SUR · MALLECO ─────────
@@ -473,6 +682,16 @@ export const VINAS = [
     cepas: ["Chardonnay", "Pinot Noir"],
     descripcion: "Pionera del vino fino en el extremo sur con su Chardonnay 'Sol de Sol', uno de los primeros del Malleco.",
     destacados: ["Sol de Sol Chardonnay", "Sol de Sol Pinot Noir"],
+    estilo: "Pionera de extremo sur", segmento: "Premium",
+  },
+  {
+    nombre: "Casa Silva Lago Ranco (Patagonia)",
+    region: "sur", valle: "Osorno / Región Austral",
+    terruno: "Viñedo de Futrono, a orillas del Lago Ranco, Valle de Osorno, Patagonia chilena. Laderas suaves frente al lago, suelo volcánico 'trumao', con influencia del lago y de los Andes. Uno de los viñedos más australes de Chile.",
+    cepas: ["Sauvignon Blanc", "Chardonnay", "Pinot Noir", "Riesling"],
+    descripcion: "La familia Silva (de Colchagua) compró este campo en 2004 para criar caballos y ganado, y al ver su belleza plantó en 2006 el primer viñedo de la Patagonia chilena. Sus vinos llevan la denominación Región Austral e incluyen un espumante de método tradicional. Cosecha manual, blancos filosos y minerales de gran acidez.",
+    destacados: ["Lago Ranco Riesling", "Lago Ranco Sauvignon Blanc", "Lago Ranco Pinot Noir"],
+    estilo: "Pionera de la Patagonia, viticultura extrema", segmento: "Premium / de culto",
   },
   {
     nombre: "Viña William Fèvre Chile",
@@ -481,6 +700,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Chardonnay", "Carménère"],
     descripcion: "Filial chilena del célebre productor de Chablis. Une la tradición borgoñona con el terruño del Maipo.",
     destacados: ["Espino", "Little Quino", "Gran Cuvée"],
+    estilo: "Tradición francesa (Chablis)", segmento: "Reserva a premium",
   },
 
   // ───────── Viñas adicionales de referencia ─────────
@@ -491,6 +711,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Sauvignon Blanc", "Pinot Noir"],
     descripcion: "Fundada en 1885, viña histórica del Maipo. Su línea T.H. explora terruños específicos a lo largo de Chile.",
     destacados: ["Founder's Collection", "T.H. (Terroir Hunter)", "Sibaris"],
+    estilo: "Tradicional histórica, de terruño", segmento: "Masivo a ícono",
   },
   {
     nombre: "Viña Tarapacá",
@@ -499,6 +720,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Sauvignon Blanc"],
     descripcion: "Fundada en 1874, con uno de los viñedos más singulares del Maipo (una 'isla' vitícola). Tintos clásicos.",
     destacados: ["Gran Reserva Etiqueta Negra", "Zavala", "El Tranque"],
+    estilo: "Tradicional histórica", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Santa Ema",
@@ -507,6 +729,7 @@ export const VINAS = [
     cepas: ["Merlot", "Carménère", "Cabernet Sauvignon"],
     descripcion: "Viña de origen italiano (familia Pavone) reconocida por su Merlot y Carménère del Maipo.",
     destacados: ["Rivalta", "Catalina", "Amplus"],
+    estilo: "Tradicional familiar", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña De Martino",
@@ -515,6 +738,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Sauvignon", "Cinsault", "País"],
     descripcion: "Viña familiar innovadora, primera carbono-neutral de Sudamérica, pionera en vinos de ánfora y en rescatar viñas viejas.",
     destacados: ["Viejas Tinajas Cinsault", "Single Vineyard", "Gallardía"],
+    estilo: "Innovadora, vino de ánfora", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Ventisquero",
@@ -523,6 +747,7 @@ export const VINAS = [
     cepas: ["Carménère", "Syrah", "Cabernet Sauvignon", "Chardonnay"],
     descripcion: "Viña moderna conocida por explorar terruños extremos, incluyendo viñedos en pleno desierto de Atacama (proyecto Tara).",
     destacados: ["Vértice", "Pangea", "Tara", "Grey"],
+    estilo: "Moderna, terruños extremos", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Maquis",
@@ -531,6 +756,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Franc", "Petit Verdot", "Syrah"],
     descripcion: "Viña con bodega sobre un meandro de río. Reconocida por Carménère y Cabernet Franc de gran calidad.",
     destacados: ["Lien", "Viola", "Franco (Cabernet Franc)"],
+    estilo: "Premium de terruño", segmento: "Reserva a ícono",
   },
   {
     nombre: "Viña Koyle",
@@ -539,6 +765,7 @@ export const VINAS = [
     cepas: ["Carménère", "Syrah", "Cabernet Sauvignon", "Garnacha"],
     descripcion: "Proyecto de la familia Undurraga Vicuña enfocado en viticultura biodinámica de altura en Colchagua Andes.",
     destacados: ["Royale", "Auma", "La Estrella"],
+    estilo: "Biodinámica de altura", segmento: "Premium a ícono",
   },
   {
     nombre: "Viña Apaltagua",
@@ -547,6 +774,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cinsault", "Cabernet Sauvignon"],
     descripcion: "Viña reconocida por su Carménère de Apalta y por trabajar Cinsault de viñas viejas del secano.",
     destacados: ["Grial", "Envero", "Cinsault Viñas Viejas"],
+    estilo: "De terruño, escala media", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Requingua",
@@ -555,6 +783,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Syrah"],
     descripcion: "Viña familiar de Curicó con buen volumen de exportación y su línea Toro de Piedra.",
     destacados: ["Toro de Piedra", "Potro de Piedra"],
+    estilo: "Familiar, exportadora", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Caliterra",
@@ -563,6 +792,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Carménère", "Syrah"],
     descripcion: "Viña ligada a Errázuriz, enfocada en sustentabilidad y tintos de terruño de Colchagua.",
     destacados: ["Cenit", "Tributo", "Edición Limitada A"],
+    estilo: "Sustentable, de terruño", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Santa Helena",
@@ -571,6 +801,7 @@ export const VINAS = [
     cepas: ["Cabernet Sauvignon", "Sauvignon Blanc", "Carménère"],
     descripcion: "Viña tradicional de buen volumen, conocida por su línea Selección del Directorio.",
     destacados: ["Selección del Directorio", "Vernus"],
+    estilo: "Gran escala", segmento: "Masivo a reserva",
   },
   {
     nombre: "Viña Bisquertt",
@@ -579,6 +810,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Sauvignon", "Syrah"],
     descripcion: "Viña familiar de Colchagua con tradición de varias generaciones.",
     destacados: ["La Joya Gran Reserva", "Q Clay"],
+    estilo: "Tradicional familiar", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Estampa",
@@ -587,6 +819,7 @@ export const VINAS = [
     cepas: ["Carménère", "Cabernet Franc", "Syrah", "Petit Verdot"],
     descripcion: "Viña especializada en ensamblajes de varias cepas, con enfoque en mezclas tintas complejas.",
     destacados: ["Gold Assemblage", "Estate Reserve"],
+    estilo: "Especialista en ensamblajes", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Polkura",
@@ -595,6 +828,7 @@ export const VINAS = [
     cepas: ["Syrah", "Malbec"],
     descripcion: "Viña boutique enfocada principalmente en Syrah de ladera de Colchagua.",
     destacados: ["Polkura Syrah", "Block g+i"],
+    estilo: "Boutique especialista en Syrah", segmento: "Premium",
   },
   {
     nombre: "Viña Garcés Silva (otras líneas)",
@@ -603,6 +837,7 @@ export const VINAS = [
     cepas: ["Sauvignon Blanc", "Pinot Noir", "Chardonnay", "Syrah"],
     descripcion: "Además de Amayna, explora Syrah y Pinot de clima frío de gran tipicidad costera.",
     destacados: ["Amayna Syrah", "Boya"],
+    estilo: "Premium de clima frío", segmento: "Premium",
   },
   {
     nombre: "Viña Ventolera",
@@ -611,6 +846,7 @@ export const VINAS = [
     cepas: ["Sauvignon Blanc", "Pinot Noir", "Chardonnay"],
     descripcion: "Viña boutique de Leyda con blancos salinos y Pinot Noir de clima frío.",
     destacados: ["Ventolera Sauvignon Blanc", "Litoral"],
+    estilo: "Boutique de clima frío", segmento: "Premium",
   },
   {
     nombre: "Viña Loma Larga",
@@ -619,6 +855,7 @@ export const VINAS = [
     cepas: ["Syrah", "Cabernet Franc", "Pinot Noir", "Sauvignon Blanc"],
     descripcion: "Viña pionera en tintos de clima frío en Casablanca, especialmente Syrah y Cabernet Franc.",
     destacados: ["Loma Larga Syrah", "Cabernet Franc"],
+    estilo: "Boutique de clima frío", segmento: "Premium",
   },
   {
     nombre: "Viña Veramonte",
@@ -627,6 +864,7 @@ export const VINAS = [
     cepas: ["Sauvignon Blanc", "Pinot Noir", "Chardonnay", "Carménère"],
     descripcion: "Viña de gran tamaño en Casablanca, con conversión a orgánico y blancos frescos representativos del valle.",
     destacados: ["Ritual", "Reserva"],
+    estilo: "Escala media, orgánica", segmento: "Reserva a premium",
   },
   {
     nombre: "Viña Quintay",
@@ -635,6 +873,7 @@ export const VINAS = [
     cepas: ["Sauvignon Blanc", "Pinot Noir", "Chardonnay"],
     descripcion: "Viña de productores de Casablanca enfocada en blancos y Pinot Noir de clima frío.",
     destacados: ["Clava Reserva", "Q Sauvignon Blanc"],
+    estilo: "De clima frío", segmento: "Reserva a premium",
   },
 ];
 
@@ -649,4 +888,12 @@ export const CEPAS = [
   { nombre: "Pinot Noir", tipo: "Tinta", nota: "Cepa delicada que encuentra su lugar en climas fríos costeros y del sur (Leyda, Casablanca, Biobío). Fresco y elegante." },
   { nombre: "Cinsault", tipo: "Tinta", nota: "Cepa del secano del Itata y Maule, antes usada para vino a granel, hoy revalorizada en vinos finos jugosos y ligeros." },
   { nombre: "Carignan", tipo: "Tinta", nota: "Plantada en el Maule tras el terremoto de 1939. Las parras viejas de secano dan tintos intensos; base del sello VIGNO." },
+  { nombre: "Merlot", tipo: "Tinta", nota: "Durante años se confundió con el Carménère en los viñedos chilenos hasta su separación en los años 90. Da vinos suaves, redondos y afrutados; rinde muy bien en zonas frescas como Isla de Maipo." },
+  { nombre: "Malbec", tipo: "Tinta", nota: "Aunque más asociado a Argentina, en Chile tiene parras viejas notables, especialmente en Colchagua (Cunaco). Tintos jugosos de fruta negra y violetas." },
+  { nombre: "Cabernet Franc", tipo: "Tinta", nota: "Cepa bordelesa en ascenso en Chile. Da vinos aromáticos, con notas herbáceas, de pimiento y gran frescura; destaca en Maule, Maipo y Colchagua." },
+  { nombre: "Petit Verdot", tipo: "Tinta", nota: "Cepa de maduración tardía que aporta color, estructura y especias en los ensamblajes bordeleses de climas cálidos como el Maipo y Aconcagua." },
+  { nombre: "Viognier", tipo: "Blanca", nota: "Blanco aromático del Ródano, introducido con éxito en Chile (pionera Viña Anakena). Notas de durazno, damasco y flores." },
+  { nombre: "Moscatel", tipo: "Blanca", nota: "Cepa tradicional del secano del Itata y Biobío, muy aromática. Base de vinos patrimoniales y del pipeño blanco." },
+  { nombre: "Riesling", tipo: "Blanca", nota: "Cepa alemana de clima frío. En Chile destaca en el Valle del Biobío, donde Cono Sur fue pionera con el primer Riesling de denominación de origen del valle. Da blancos de gran acidez, cítricos y florales, con notas de durazno y un toque mineral." },
+  { nombre: "Gewürztraminer", tipo: "Blanca", nota: "Cepa aromática de clima frío cultivada en el sur de Chile (Biobío). Muy perfumada, con notas de lichi, rosas y especias. Cono Sur fue de las primeras en producirla en el país." },
 ];

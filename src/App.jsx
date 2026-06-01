@@ -57,6 +57,13 @@ export default function App() {
     setValleActivo(null);
   };
 
+  // Navegación directa a un valle desde un pin del mapa
+  const seleccionarValle = (regionId, valle) => {
+    setRegionActiva(regionId);
+    setValleActivo(valle);
+    setBusqueda('');
+  };
+
   const buscarCepaDesdeSeccion = (nombreCepa) => {
     setVista('explorar');
     setRegionActiva(null);
@@ -165,6 +172,7 @@ export default function App() {
                 regiones={REGIONES}
                 regionActiva={regionActiva}
                 onSelectRegion={seleccionarRegion}
+                onSelectValle={seleccionarValle}
               />
 
               <div className="explorar-panel">
@@ -205,6 +213,7 @@ export default function App() {
           Datos compilados como base de trabajo. Verifica cifras específicas en las
           webs oficiales de cada viña.
         </p>
+        <p className="pie-nota pie-atrib">Mapa: Wikimedia Commons, CC BY-SA</p>
       </footer>
 
       {/* ───────── Ficha modal ───────── */}

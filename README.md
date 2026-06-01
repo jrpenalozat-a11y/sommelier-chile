@@ -5,11 +5,14 @@ norte hasta los viñedos fríos del sur. Pensada con un diseño elegante tipo **
 vinos** (tonos vino tinto, dorado y crema, tipografía con serifas) y optimizada para
 usarse en el celular.
 
+🌐 **App en vivo:** https://jrpenalozat-a11y.github.io/sommelier-chile/
+
 ## ✨ Funcionalidades
 
-- **Mapa de Chile estilizado**: las regiones vitícolas (Atacama, Coquimbo, Aconcagua,
-  Valle Central y Sur) aparecen ordenadas de norte a sur. Al tocar una región se
-  muestran sus valles.
+- **Mapa real de Chile**: usa la silueta oficial del país (SVG de Wikimedia Commons)
+  con sus regiones agrupadas en las zonas vitícolas (Atacama, Coquimbo, Aconcagua,
+  Valle Central y Sur), coloreadas con tonos de vino. Al tocar una zona se muestran
+  sus valles; cada valle tiene un pin dorado que lleva directo a sus viñas.
 - **Valles**: al elegir un valle se listan todas sus viñas, con un contador de cuántas
   hay en cada uno.
 - **Ficha de viña**: al tocar una viña se abre su ficha completa con terruño, cepas,

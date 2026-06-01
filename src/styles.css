@@ -183,65 +183,78 @@ body {
   grid-template-columns: minmax(280px, 360px) 1fr;
 }
 
-/* ───────── Mapa ───────── */
+/* ───────── Mapa real de Chile ───────── */
 .mapa-wrap {
-  background: linear-gradient(180deg, var(--crema-papel), #f1e7d4);
-  border: 1px solid var(--linea);
-  border-radius: 18px;
-  padding: 12px 8px 6px;
+  background: linear-gradient(180deg, var(--crema-papel), #f0e6d2);
+  border: 1px solid var(--dorado);
+  border-radius: 14px;
+  padding: 12px 10px 8px;
   box-shadow: var(--sombra);
+  outline: 1px solid rgba(201, 162, 75, 0.4);
+  outline-offset: 5px;
   position: sticky;
   top: 12px;
 }
-.mapa-svg { width: 100%; height: auto; display: block; }
-
-.mapa-region { cursor: pointer; }
-.mapa-poligono {
-  stroke: var(--crema-papel);
-  stroke-width: 2;
-  transition: opacity 0.18s ease, filter 0.18s ease;
-  opacity: 0.82;
-}
-.mapa-region:hover .mapa-poligono { opacity: 1; }
-.mapa-region.activa .mapa-poligono {
-  opacity: 1;
-  stroke: var(--dorado);
-  stroke-width: 3;
-  filter: drop-shadow(0 0 6px rgba(201, 162, 75, 0.6));
-}
-.mapa-region:focus { outline: none; }
-.mapa-region:focus-visible .mapa-poligono {
-  stroke: var(--dorado);
-  stroke-width: 3;
-}
-
-.mapa-punto { fill: var(--dorado-claro); stroke: var(--vino-oscuro); stroke-width: 1; }
-.mapa-conector { stroke: var(--dorado); stroke-width: 1; stroke-dasharray: 2 3; }
-.mapa-etiqueta {
+.mapa-titulo {
   font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 600;
-  fill: var(--vino);
+  text-align: center;
+  color: var(--vino);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  margin: 2px 0 0;
 }
-.mapa-region.activa .mapa-etiqueta { fill: var(--vino-claro); }
-.mapa-sub { font-family: var(--texto); font-size: 13px; fill: var(--tinta-suave); }
-
-.mapa-brujula { font-family: var(--serif); font-size: 18px; font-weight: 700; fill: var(--dorado); }
-.mapa-eje { stroke: var(--dorado); stroke-width: 1; stroke-dasharray: 1 5; opacity: 0.7; }
-.mapa-oceano {
+.mapa-sub {
   font-family: var(--serif);
+  text-align: center;
   font-style: italic;
-  font-size: 15px;
-  fill: #9bb0bd;
+  color: #9a7a3e;
+  font-size: 12px;
   letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 8px;
 }
+.mapa-area {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(100deg, #d6e1e6 0%, #dde7ea 55%, #e7eef0 100%);
+  border: 1px solid rgba(201, 162, 75, 0.3);
+}
+.mapa-area svg.mapa-real { width: 100%; height: auto; display: block; }
+.mapa-cargando {
+  padding: 40px 10px;
+  text-align: center;
+  color: #9a7a3e;
+  font-family: var(--serif);
+  font-size: 18px;
+}
+
+/* Zonas: hover y activa */
+.mapa-zona { transition: filter 0.2s ease; }
+.mapa-zona:hover { filter: brightness(1.13) saturate(1.06); }
+.mapa-zona.activa { filter: brightness(1.18) saturate(1.1) drop-shadow(0 0 3px rgba(201, 162, 75, 0.8)); }
+
+/* Pines de valle */
+.mapa-vhalo { fill: var(--dorado-claro); opacity: 0.45; transition: opacity 0.2s ease; }
+.mapa-vpin { fill: var(--dorado); stroke: #7a5a16; stroke-width: 0.8; }
+.mapa-vcnx { stroke: var(--dorado); stroke-width: 1; opacity: 0.65; }
+.mapa-vlabel { font-family: var(--serif); font-style: italic; fill: #5d4a4f; }
+.mapa-pin-g:hover .mapa-vhalo { opacity: 0.85; }
+.mapa-pin-g:hover .mapa-vlabel { fill: var(--vino); }
+
+/* Etiquetas de zona */
+.mapa-zlabel { font-family: var(--serif); font-weight: 600; fill: #6e2230; }
+.mapa-zcnx { stroke: var(--dorado); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.7; }
+
 .mapa-hint {
   text-align: center;
   font-style: italic;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--tinta-suave);
-  margin: 4px 0 8px;
+  margin: 8px 0 2px;
 }
+.pie-atrib { font-size: 12px; opacity: 0.75; }
 
 /* ───────── Títulos de sección ───────── */
 .titulo-seccion {
@@ -439,6 +452,38 @@ body {
   margin: 0;
   line-height: 1.1;
 }
+.ficha-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--linea);
+  background: var(--crema-papel);
+  color: var(--tinta);
+}
+.badge-clave {
+  font-family: var(--serif);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+.badge-estilo { border-color: var(--vino-claro); }
+.badge-estilo .badge-clave { color: var(--vino-claro); }
+.badge-segmento {
+  background: rgba(201, 162, 75, 0.16);
+  border-color: var(--dorado);
+}
+.badge-segmento .badge-clave { color: #9a7a1e; }
+
 .ficha-divisor {
   text-align: center;
   color: var(--dorado);

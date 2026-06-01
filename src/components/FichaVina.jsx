@@ -29,6 +29,21 @@ export default function FichaVina({ vina, nombreRegion, onClose }) {
         <p className="ficha-region">{nombreRegion} · {vina.valle}</p>
         <h2 className="ficha-nombre">{vina.nombre}</h2>
 
+        {(vina.estilo || vina.segmento) && (
+          <div className="ficha-badges">
+            {vina.estilo && (
+              <span className="badge badge-estilo">
+                <span className="badge-clave">Estilo</span> {vina.estilo}
+              </span>
+            )}
+            {vina.segmento && (
+              <span className="badge badge-segmento">
+                <span className="badge-clave">Segmento</span> {vina.segmento}
+              </span>
+            )}
+          </div>
+        )}
+
         <div className="ficha-divisor" aria-hidden="true">❧</div>
 
         <p className="ficha-descripcion">{vina.descripcion}</p>
