@@ -1,17 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-// El SVG del mapa se embebe en el bundle (funciona offline y en un solo archivo)
-import chileMapaSvg from '../assets/chile-mapa.svg?raw';
-
-// ════════════════════════════════════════════════════════════
-//  Mapa real de Chile (chile-mapa.svg, Wikimedia Commons CC BY-SA)
-//  Se carga el SVG, se agrupan sus regiones en las zonas vitícolas
-//  de la app y se colorean con tonos de vino. Se añaden pines por
-//  valle y se conecta la navegación (zona → valles, pin → valle).
-// ════════════════════════════════════════════════════════════
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
-// Cada zona (id de región en los datos) → ids de región en el SVG
 const ZONA_SVG = {
   atacama:        ['Region_Arica_Parinacota', 'Region_Tarapaca', 'Region_Antofagasta', 'Region_Atacama'],
   coquimbo:       ['Region_Coquimbo'],
@@ -20,7 +10,6 @@ const ZONA_SVG = {
   sur:            ['Nuble-9', 'Biobio-4', 'Region_Araucania', 'Region_Los_Rios', 'Region_Los_Lagos', 'Region_Aisen', 'Region_Magallanes'],
 };
 
-// Tono de vino por zona (cálido al norte → profundo al sur)
 const ZONA_COLOR = {
   atacama:        '#bb6a52',
   coquimbo:       '#a83f44',
@@ -29,8 +18,7 @@ const ZONA_COLOR = {
   sur:            '#561a29',
 };
 
-// Posición aproximada de cada valle: región-ancla del SVG + fracción vertical.
-// Los de Valparaíso usan banda interpolada (vp) por traer islas fusionadas.
+// CORRECCIÓN: Osorno en Los Ríos, fracción 0.85
 const VALLE_POS = {
   'Atacama':                 { anchor: 'Region_Atacama', f: 0.55 },
   'Elqui':                   { anchor: 'Region_Coquimbo', f: 0.18 },
@@ -47,10 +35,9 @@ const VALLE_POS = {
   'Itata':                   { anchor: 'Nuble-9', f: 0.5 },
   'Biobío':                  { anchor: 'Biobio-4', f: 0.5 },
   'Malleco':                 { anchor: 'Region_Araucania', f: 0.4 },
-  'Osorno / Región Austral': { anchor: 'Region_Los_Lagos', f: 0.5 },
+  'Osorno / Región Austral': { anchor: 'Region_Los_Rios', f: 0.85 }
 };
 
-// Insets/islas que no son Chile continental (distorsionan el encuadre)
 const ISLA = /Isla|Pascua|Juan_Fern|Selkirk|Crusoe|Ant[aá]rt|Rect_|San_Felix|Sala_y/i;
 
 function el(name, attrs, parent) {
@@ -68,7 +55,6 @@ function isIsland(node, stop) {
   }
   return false;
 }
-// Bounding box usando solo los paths visibles (excluye islas ocultas)
 function visBBox(node) {
   let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
   const ps = node.tagName.toLowerCase() === 'path' ? [node] : node.querySelectorAll('path');
@@ -88,18 +74,17 @@ function visBBox(node) {
 
 export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSelectValle }) {
   const contRef = useRef(null);
-  // callbacks siempre frescos sin reconstruir el SVG
   const cb = useRef({});
   cb.current = { onSelectRegion, onSelectValle, regiones, regionActiva };
 
-  // Construcción única del mapa
   useEffect(() => {
     let cancelado = false;
     const cont = contRef.current;
     if (!cont) return;
     cont.innerHTML = '<p class="mapa-cargando">Cargando mapa de Chile…</p>';
 
-    Promise.resolve(chileMapaSvg)
+    fetch(import.meta.env.BASE_URL + 'chile-mapa.svg')
+      .then((r) => r.text())
       .then((txt) => {
         if (cancelado) return;
         cont.innerHTML = txt;
@@ -109,10 +94,9 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
         svg.removeAttribute('height');
         svg.classList.add('mapa-real');
 
-        const { regiones, onSelectRegion, onSelectValle } = cb.current;
-        const idsZona = {}; // regionId → nodos del SVG (para hover/activo)
+        const { regiones } = cb.current;
+        const idsZona = {};
 
-        // 1) Ocultar todo, luego mostrar solo el continente coloreado por zona
         svg.querySelectorAll('path,rect,polygon,polyline,circle,ellipse,image,text,line,use')
           .forEach((p) => { p.style.display = 'none'; });
 
@@ -142,7 +126,6 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
         }
         svg._idsZona = idsZona;
 
-        // 2) Encuadre al Chile continental
         let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
         recoloreados.forEach((n) => {
           const b = visBBox(n);
@@ -155,16 +138,14 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
         const bboxOf = (id) => { const n = document.getElementById(id); return n ? visBBox(n) : null; };
-        const ann = el('g', {}, svg); // capa de anotaciones
+        const ann = el('g', {}, svg);
         const gutterX = x0 - padL * 0.8;
 
-        // 3) Banda interpolada para los valles de Valparaíso (Aconcagua)
         const coqB = bboxOf('Region_Coquimbo'), metB = bboxOf('Region_Metropolitana');
         const vpBand = (coqB && metB)
           ? { top: coqB.y2, span: (metB.y + metB.height * 0.5) - coqB.y2, x: metB.x + metB.width * 0.22 }
           : null;
 
-        // 4) Marcadores de valle + callouts, recorriendo los datos reales
         regiones.forEach((reg) => {
           (reg.valles || []).forEach((valle) => {
             const pos = VALLE_POS[valle];
@@ -190,7 +171,6 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
           });
         });
 
-        // 5) Etiquetas de zona (derecha)
         const ZL = [
           { t: 'Atacama', anchor: 'Region_Atacama', yo: 0 },
           { t: 'Coquimbo', anchor: 'Region_Coquimbo', yo: -0.18 },
@@ -209,7 +189,6 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
           t.textContent = z.t;
         });
 
-        // 6) Oleaje + rosa de los vientos
         [0.08, 0.16, 0.24].forEach((fy) => {
           const yy = y0 + vbH * fy;
           el('path', { d: `M ${vbX + vbW * 0.06} ${yy} q ${vbW * 0.05} -${vbW * 0.02} ${vbW * 0.1} 0 t ${vbW * 0.1} 0`,
@@ -233,14 +212,12 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
       })
       .catch((e) => {
         if (!cancelado && cont) cont.innerHTML = '<p class="mapa-cargando">No se pudo cargar el mapa.</p>';
-        // eslint-disable-next-line no-console
         console.error('Mapa Chile:', e);
       });
 
     return () => { cancelado = true; };
   }, []);
 
-  // Resaltar la zona activa cuando cambia regionActiva
   useEffect(() => {
     const svg = contRef.current && contRef.current.querySelector('svg');
     if (svg && svg._idsZona) aplicarActivo(svg, regionActiva);
@@ -249,11 +226,8 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
   function aplicarActivo(svg, activa) {
     const map = svg._idsZona || {};
     Object.keys(map).forEach((zonaId) => {
-      map[zonaId].forEach((node) => {
-        node.classList.toggle('activa', zonaId === activa);
-      });
+      map[zonaId].forEach((node) => node.classList.toggle('activa', zonaId === activa));
     });
-    // Mostrar las etiquetas de valle solo de la zona activa
     svg.querySelectorAll('.mapa-pin-g').forEach((g) => {
       g.classList.toggle('activa', g.dataset.zona === activa);
     });
@@ -265,6 +239,7 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
       <p className="mapa-sub">· De norte a sur ·</p>
       <div className="mapa-area" ref={contRef} aria-label="Mapa de las zonas vitícolas de Chile" />
       <p className="mapa-hint">Toca una zona para ver sus valles · toca un pin para ir al valle</p>
+      <p className="mapa-atrib">Mapa: Wikimedia Commons · CC BY-SA</p>
     </div>
   );
 }

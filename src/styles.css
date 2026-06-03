@@ -15,614 +15,188 @@
   --tinta-suave: #5d4a4f;
   --linea: #e0d3bd;
   --sombra: 0 10px 30px rgba(61, 18, 32, 0.18);
-
   --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, 'Times New Roman', serif;
   --texto: 'EB Garamond', Georgia, serif;
 }
 
 * { box-sizing: border-box; }
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
+html, body { margin: 0; padding: 0; }
 
 body {
   font-family: var(--texto);
   color: var(--tinta);
-  background:
-    radial-gradient(1200px 600px at 50% -200px, rgba(201, 162, 75, 0.12), transparent 70%),
-    var(--crema);
+  background: radial-gradient(1200px 600px at 50% -200px, rgba(201, 162, 75, 0.12), transparent 70%), var(--crema);
   font-size: 17px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-.app {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 18px 60px;
-}
+.app { max-width: 1080px; margin: 0 auto; padding: 0 18px 60px; }
 
-/* ───────── Encabezado ───────── */
 .cabecera {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 26px 4px 18px;
-  border-bottom: 2px solid var(--dorado);
-  margin-bottom: 4px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 26px 4px 18px; border-bottom: 2px solid var(--dorado); margin-bottom: 4px;
 }
-
-.cabecera-marca {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
+.cabecera-marca { display: flex; align-items: center; gap: 14px; }
 .cabecera-copa { font-size: 38px; line-height: 1; }
-
-.cabecera-titulo {
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 34px;
-  color: var(--vino);
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-
-.cabecera-lema {
-  margin: 2px 0 0;
-  font-style: italic;
-  color: var(--tinta-suave);
-  font-size: 16px;
-}
-
-.cabecera-nav { display: flex; gap: 8px; }
-
+.cabecera-titulo { font-family: var(--serif); font-weight: 700; font-size: 34px; color: var(--vino); margin: 0; letter-spacing: 0.5px; }
+.cabecera-lema { margin: 2px 0 0; font-style: italic; color: var(--tinta-suave); font-size: 16px; }
+.cabecera-nav { display: flex; gap: 8px; align-items: center; }
 .nav-btn {
-  font-family: var(--serif);
-  font-size: 18px;
-  background: transparent;
-  border: 1px solid var(--linea);
-  color: var(--vino);
-  padding: 8px 18px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.18s ease;
+  font-family: var(--serif); font-size: 18px; background: transparent; border: 1px solid var(--linea);
+  color: var(--vino); padding: 8px 18px; border-radius: 999px; cursor: pointer; transition: all 0.18s ease;
+  text-decoration: none;
 }
 .nav-btn:hover { border-color: var(--dorado); background: rgba(201, 162, 75, 0.1); }
-.nav-btn.activo {
-  background: var(--vino);
-  color: var(--crema-papel);
-  border-color: var(--vino);
+.nav-btn.activo { background: var(--vino); color: var(--crema-papel); border-color: var(--vino); }
+.tema-btn {
+  background: none; border: 1px solid var(--linea); border-radius: 999px;
+  font-size: 1.4rem; cursor: pointer; padding: 4px 10px;
 }
 
-/* ───────── Buscador ───────── */
-.buscador-wrap {
-  position: relative;
-  margin: 22px 0 10px;
-}
-
+.buscador-wrap { position: relative; margin: 22px 0 10px; }
 .buscador {
-  width: 100%;
-  font-family: var(--texto);
-  font-size: 18px;
-  padding: 14px 44px 14px 18px;
-  border: 1px solid var(--linea);
-  border-radius: 14px;
-  background: var(--crema-papel);
-  color: var(--tinta);
+  width: 100%; font-family: var(--texto); font-size: 18px; padding: 14px 44px 14px 18px;
+  border: 1px solid var(--linea); border-radius: 14px; background: var(--crema-papel); color: var(--tinta);
   box-shadow: inset 0 1px 3px rgba(61, 18, 32, 0.06);
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 .buscador::placeholder { color: #a59384; font-style: italic; }
-.buscador:focus {
-  outline: none;
-  border-color: var(--dorado);
-  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.22);
-}
-
+.buscador:focus { outline: none; border-color: var(--dorado); box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.22); }
 .buscador-limpiar {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: var(--vino);
-  color: #fff;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%); border: none;
+  background: var(--vino); color: #fff; width: 26px; height: 26px; border-radius: 50%; font-size: 18px; cursor: pointer;
 }
 
-/* ───────── Intro ───────── */
 .intro { margin: 8px 0 18px; }
-.intro-texto {
-  font-size: 19px;
-  color: var(--tinta-suave);
-  max-width: 640px;
-  font-style: italic;
-}
+.intro-texto { font-size: 19px; color: var(--tinta-suave); max-width: 640px; font-style: italic; }
 
-/* ───────── Migas de pan ───────── */
-.migas {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin: 6px 0 16px;
-  font-family: var(--serif);
-  font-size: 18px;
-}
-.miga {
-  background: none;
-  border: none;
-  color: var(--vino-claro);
-  cursor: pointer;
-  padding: 2px 4px;
-  font: inherit;
-}
+.migas { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 6px 0 16px; font-family: var(--serif); font-size: 18px; }
+.miga { background: none; border: none; color: var(--vino-claro); cursor: pointer; padding: 2px 4px; font: inherit; }
 .miga:hover { text-decoration: underline; }
 .miga.actual { color: var(--tinta); font-weight: 600; cursor: default; }
 .miga-sep { color: var(--dorado); }
 
-/* ───────── Layout explorar ───────── */
-.explorar-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  align-items: start;
-}
-.explorar-layout.con-region {
-  grid-template-columns: minmax(280px, 360px) 1fr;
-}
+.explorar-layout { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; }
+.explorar-layout.con-region { grid-template-columns: minmax(280px, 360px) 1fr; }
 
-/* ───────── Mapa real de Chile ───────── */
 .mapa-wrap {
-  background: linear-gradient(180deg, var(--crema-papel), #f0e6d2);
-  border: 1px solid var(--dorado);
-  border-radius: 14px;
-  padding: 12px 10px 8px;
-  box-shadow: var(--sombra);
-  outline: 1px solid rgba(201, 162, 75, 0.4);
-  outline-offset: 5px;
-  position: sticky;
-  top: 12px;
+  background: linear-gradient(180deg, var(--crema-papel), #f0e6d2); border: 1px solid var(--dorado);
+  border-radius: 14px; padding: 12px 10px 8px; box-shadow: var(--sombra);
+  outline: 1px solid rgba(201, 162, 75, 0.4); outline-offset: 5px; position: sticky; top: 12px;
 }
-.mapa-titulo {
-  font-family: var(--serif);
-  text-align: center;
-  color: var(--vino);
-  font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 0.5px;
-  margin: 2px 0 0;
-}
-.mapa-sub {
-  font-family: var(--serif);
-  text-align: center;
-  font-style: italic;
-  color: #9a7a3e;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0 0 8px;
-}
-.mapa-area {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  background: linear-gradient(100deg, #d6e1e6 0%, #dde7ea 55%, #e7eef0 100%);
-  border: 1px solid rgba(201, 162, 75, 0.3);
-}
+.mapa-titulo { font-family: var(--serif); text-align: center; color: var(--vino); font-weight: 700; font-size: 22px; margin: 2px 0 0; }
+.mapa-sub { text-align: center; font-style: italic; color: #9a7a3e; font-size: 12px; letter-spacing: 2px; margin: 0 0 8px; }
+.mapa-area { border-radius: 10px; overflow: hidden; background: linear-gradient(100deg, #d6e1e6 0%, #dde7ea 55%, #e7eef0 100%); border: 1px solid rgba(201, 162, 75, 0.3); }
 .mapa-area svg.mapa-real { width: 100%; height: auto; display: block; }
-.mapa-cargando {
-  padding: 40px 10px;
-  text-align: center;
-  color: #9a7a3e;
-  font-family: var(--serif);
-  font-size: 18px;
-}
+.mapa-cargando { padding: 40px 10px; text-align: center; color: #9a7a3e; font-family: var(--serif); font-size: 18px; }
 
-/* Zonas: hover y activa (brillo simple, sin drop-shadow ni transición:
-   evita re-rasterizar el archipiélago y mantiene fluido el toque en móvil) */
 .mapa-zona { cursor: pointer; }
 .mapa-zona:hover { filter: brightness(1.1) saturate(1.05); }
 .mapa-zona.activa { filter: brightness(1.14) saturate(1.08); }
 
-/* Pines de valle (siempre visibles); etiquetas y conectores solo en zona
-   activa o al pasar el pin, para no saturar el mapa */
 .mapa-vhalo { fill: var(--dorado-claro); opacity: 0.45; transition: opacity 0.2s ease; }
 .mapa-vpin { fill: var(--dorado); stroke: #7a5a16; stroke-width: 0.8; }
-.mapa-vcnx { stroke: var(--dorado); stroke-width: 1; opacity: 0; transition: opacity 0.2s ease; }
-.mapa-vlabel { font-family: var(--serif); font-style: italic; fill: #5d4a4f; opacity: 0; transition: opacity 0.2s ease; }
-.mapa-pin-g.activa .mapa-vcnx,
-.mapa-pin-g:hover .mapa-vcnx { opacity: 0.65; }
-.mapa-pin-g.activa .mapa-vlabel,
-.mapa-pin-g:hover .mapa-vlabel { opacity: 1; }
-.mapa-pin-g.activa .mapa-vhalo,
-.mapa-pin-g:hover .mapa-vhalo { opacity: 0.85; }
-.mapa-pin-g:hover .mapa-vlabel { fill: var(--vino); }
-
-/* Etiquetas de zona */
+.mapa-vcnx { stroke: var(--dorado); stroke-width: 1; opacity: 0; }
+.mapa-vlabel { font-family: var(--serif); font-style: italic; fill: #5d4a4f; opacity: 0; }
+.mapa-pin-g.activa .mapa-vcnx, .mapa-pin-g:hover .mapa-vcnx { opacity: 0.65; }
+.mapa-pin-g.activa .mapa-vlabel, .mapa-pin-g:hover .mapa-vlabel { opacity: 1; }
 .mapa-zlabel { font-family: var(--serif); font-weight: 600; fill: #6e2230; }
 .mapa-zcnx { stroke: var(--dorado); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.7; }
+.mapa-hint { text-align: center; font-style: italic; font-size: 13px; color: var(--tinta-suave); margin: 8px 0 2px; }
+.mapa-atrib { text-align: center; font-size: 11px; color: var(--tinta-suave); opacity: 0.7; margin: 2px 0 4px; }
 
-.mapa-hint {
-  text-align: center;
-  font-style: italic;
-  font-size: 13px;
-  color: var(--tinta-suave);
-  margin: 8px 0 2px;
-}
-.pie-atrib { font-size: 12px; opacity: 0.75; }
+.titulo-seccion { font-family: var(--serif); font-size: 30px; font-weight: 700; color: var(--vino); margin: 0 0 6px; line-height: 1.15; }
+.titulo-seccion::after { content: ''; display: block; width: 60px; height: 2px; background: var(--dorado); margin-top: 8px; }
+.region-desc { color: var(--tinta-suave); font-size: 17px; margin: 10px 0 16px; max-width: 70ch; }
 
-/* ───────── Títulos de sección ───────── */
-.titulo-seccion {
-  font-family: var(--serif);
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--vino);
-  margin: 0 0 6px;
-  line-height: 1.15;
-}
-.titulo-seccion::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: var(--dorado);
-  margin-top: 8px;
-}
-.region-desc {
-  color: var(--tinta-suave);
-  font-size: 17px;
-  margin: 10px 0 16px;
-  max-width: 70ch;
-}
-
-/* ───────── Panel de valles ───────── */
 .panel-valles { margin-bottom: 18px; }
-.lista-valles {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+.lista-valles { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .chip-valle {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--serif);
-  font-size: 19px;
-  background: var(--crema-papel);
-  border: 1px solid var(--linea);
-  color: var(--vino);
-  padding: 9px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.18s ease;
+  display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 19px;
+  background: var(--crema-papel); border: 1px solid var(--linea); color: var(--vino); padding: 9px 14px; border-radius: 999px; cursor: pointer;
 }
-.chip-valle:hover:not(:disabled) { border-color: var(--dorado); background: #fff; }
-.chip-valle.activo {
-  background: var(--vino);
-  color: var(--crema-papel);
-  border-color: var(--vino);
-}
+.chip-valle.activo { background: var(--vino); color: var(--crema-papel); border-color: var(--vino); }
 .chip-valle:disabled { opacity: 0.4; cursor: not-allowed; }
 .chip-conteo {
-  font-family: var(--texto);
-  font-size: 13px;
-  background: var(--dorado);
-  color: var(--vino-oscuro);
-  border-radius: 999px;
-  min-width: 22px;
-  height: 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 6px;
+  font-family: var(--texto); font-size: 13px; background: var(--dorado); color: var(--vino-oscuro);
+  border-radius: 999px; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; padding: 0 6px;
 }
-.chip-valle.activo .chip-conteo { background: var(--dorado-claro); }
 
-/* ───────── Grilla de viñas ───────── */
 .lista-vinas { margin-top: 8px; }
-.grilla-vinas {
-  list-style: none;
-  margin: 16px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 14px;
-}
+.grilla-vinas { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.card-vina-wrapper { position: relative; list-style: none; }
 .card-vina {
-  width: 100%;
-  text-align: left;
-  background: var(--crema-papel);
-  border: 1px solid var(--linea);
-  border-left: 4px solid var(--vino);
-  border-radius: 12px;
-  padding: 16px;
-  cursor: pointer;
-  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
-  font: inherit;
-  color: inherit;
+  width: 100%; text-align: left; background: var(--crema-papel); border: 1px solid var(--linea);
+  border-left: 4px solid var(--vino); border-radius: 12px; padding: 16px; cursor: pointer;
 }
-.card-vina:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--sombra);
-  border-left-color: var(--dorado);
+.card-vina:hover { transform: translateY(-3px); box-shadow: var(--sombra); border-left-color: var(--dorado); }
+.card-vina-nombre { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--vino); margin: 0 0 2px; }
+.card-vina-valle { margin: 0 0 10px; font-style: italic; color: var(--tinta-suave); font-size: 15px; }
+.card-vina-cepas { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.mini-cepa { font-size: 13px; background: rgba(201, 162, 75, 0.16); color: var(--vino-oscuro); border-radius: 6px; padding: 2px 8px; }
+.favorito-corazon {
+  position: absolute; top: 8px; right: 10px; background: none; border: none; font-size: 1.6rem; cursor: pointer; opacity: 0.7;
 }
-.card-vina-nombre {
-  font-family: var(--serif);
-  font-size: 21px;
-  font-weight: 600;
-  color: var(--vino);
-  margin: 0 0 2px;
-  line-height: 1.15;
-}
-.card-vina-valle {
-  margin: 0 0 10px;
-  font-style: italic;
-  color: var(--tinta-suave);
-  font-size: 15px;
-}
-.card-vina-cepas {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.mini-cepa {
-  font-size: 13px;
-  background: rgba(201, 162, 75, 0.16);
-  color: var(--vino-oscuro);
-  border-radius: 6px;
-  padding: 2px 8px;
-}
+.favorito-corazon:hover { opacity: 1; }
 
-.vacio {
-  font-style: italic;
-  color: var(--tinta-suave);
-  padding: 16px 0;
-}
+.filtros-cepas { background: var(--crema-papel); border: 1px solid var(--linea); border-radius: 12px; padding: 12px; margin: 16px 0; }
+.filtros-titulo { font-family: var(--serif); margin: 0 0 8px 0; font-size: 1rem; color: var(--vino); }
+.filtros-grupo { display: flex; flex-wrap: wrap; gap: 12px; }
+.filtro-check { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; cursor: pointer; }
+.filtros-limpiar { margin-top: 10px; background: none; border: 1px solid var(--dorado); color: var(--dorado); border-radius: 20px; padding: 4px 12px; cursor: pointer; }
 
-/* ───────── Ficha modal ───────── */
 .ficha-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(40, 12, 22, 0.6);
-  backdrop-filter: blur(3px);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 30px 16px;
-  overflow-y: auto;
-  z-index: 100;
-  animation: aparecer 0.18s ease;
+  position: fixed; inset: 0; background: rgba(40, 12, 22, 0.6); backdrop-filter: blur(3px);
+  display: flex; align-items: flex-start; justify-content: center; padding: 30px 16px; overflow-y: auto; z-index: 100;
 }
-@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
-
 .ficha {
-  position: relative;
-  background:
-    linear-gradient(180deg, var(--crema-papel), var(--crema));
-  border: 1px solid var(--dorado);
-  border-radius: 16px;
-  max-width: 620px;
-  width: 100%;
-  padding: 34px 32px 30px;
+  position: relative; background: linear-gradient(180deg, var(--crema-papel), var(--crema));
+  border: 1px solid var(--dorado); border-radius: 16px; max-width: 620px; width: 100%; padding: 34px 32px 30px;
   box-shadow: 0 24px 60px rgba(40, 12, 22, 0.4);
-  animation: subir 0.22s ease;
 }
-@keyframes subir { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-.ficha-cerrar {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid var(--linea);
-  background: #fff;
-  color: var(--vino);
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-}
-.ficha-cerrar:hover { background: var(--vino); color: #fff; }
-
-.ficha-region {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 13px;
-  color: var(--dorado);
-  font-weight: 600;
-  margin: 0 0 4px;
-}
-.ficha-nombre {
-  font-family: var(--serif);
-  font-size: 34px;
-  font-weight: 700;
-  color: var(--vino);
-  margin: 0;
-  line-height: 1.1;
-}
-.ficha-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 15px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--linea);
-  background: var(--crema-papel);
-  color: var(--tinta);
-}
-.badge-clave {
-  font-family: var(--serif);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-.badge-estilo { border-color: var(--vino-claro); }
-.badge-estilo .badge-clave { color: var(--vino-claro); }
-.badge-segmento {
-  background: rgba(201, 162, 75, 0.16);
-  border-color: var(--dorado);
-}
-.badge-segmento .badge-clave { color: #9a7a1e; }
-
-.ficha-divisor {
-  text-align: center;
-  color: var(--dorado);
-  font-size: 22px;
-  margin: 12px 0 14px;
-}
-.ficha-descripcion {
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--tinta);
-  margin: 0 0 20px;
-}
+.ficha-cerrar { position: absolute; top: 14px; right: 16px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--linea); background: #fff; color: var(--vino); font-size: 22px; cursor: pointer; }
+.ficha-region { text-transform: uppercase; letter-spacing: 2px; font-size: 13px; color: var(--dorado); font-weight: 600; }
+.ficha-nombre { font-family: var(--serif); font-size: 34px; font-weight: 700; color: var(--vino); margin: 0; }
+.ficha-badges { display: flex; gap: 8px; margin-top: 12px; }
+.badge { font-size: 15px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--linea); background: var(--crema-papel); }
+.ficha-divisor { text-align: center; color: var(--dorado); font-size: 22px; margin: 12px 0 14px; }
+.ficha-descripcion { font-size: 18px; line-height: 1.6; margin-bottom: 20px; }
 .ficha-bloque { margin-bottom: 18px; }
-.ficha-label {
-  font-family: var(--serif);
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--vino-claro);
-  margin: 0 0 6px;
-  border-bottom: 1px solid var(--linea);
-  padding-bottom: 4px;
-}
-.ficha-terruno { margin: 0; color: var(--tinta-suave); font-size: 17px; line-height: 1.55; }
+.ficha-label { font-family: var(--serif); font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--vino-claro); border-bottom: 1px solid var(--linea); padding-bottom: 4px; }
+.ficha-terruno { color: var(--tinta-suave); font-size: 17px; }
+.ficha-cepas { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+.ficha-cepa { background: var(--vino); color: var(--crema-papel); font-size: 15px; padding: 5px 12px; border-radius: 999px; }
+.ficha-destacados { list-style: none; padding: 0; }
+.ficha-destacado { font-size: 18px; padding: 6px 0; border-bottom: 1px dotted var(--linea); }
 
-.ficha-cepas, .ficha-destacados {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.ficha-cepas { display: flex; flex-wrap: wrap; gap: 8px; }
-.ficha-cepa {
-  background: var(--vino);
-  color: var(--crema-papel);
-  font-size: 15px;
-  padding: 5px 12px;
-  border-radius: 999px;
-}
-.ficha-destacado {
-  font-size: 18px;
-  padding: 6px 0;
-  border-bottom: 1px dotted var(--linea);
-}
-.ficha-destacado:last-child { border-bottom: none; }
-.copa { margin-right: 4px; }
-
-/* ───────── Sección Cepas ───────── */
-.grilla-cepas {
-  list-style: none;
-  margin: 20px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-.card-cepa {
-  background: var(--crema-papel);
-  border: 1px solid var(--linea);
-  border-top: 5px solid var(--vino);
-  border-radius: 12px;
-  padding: 18px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+.seccion-cepas { margin-top: 20px; }
+.grilla-cepas { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; list-style: none; padding: 0; }
+.card-cepa { background: var(--crema-papel); border: 1px solid var(--linea); border-top: 5px solid var(--vino); border-radius: 12px; padding: 18px; }
 .card-cepa.tipo-blanca { border-top-color: var(--dorado); }
-.card-cepa-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-.card-cepa-nombre {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--vino);
-  margin: 0;
-}
-.card-cepa-tipo {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--vino-oscuro);
-  background: rgba(201, 162, 75, 0.25);
-  padding: 3px 9px;
-  border-radius: 999px;
-}
-.card-cepa.tipo-blanca .card-cepa-tipo { background: rgba(201, 162, 75, 0.4); }
-.card-cepa-nota {
-  font-size: 16px;
-  color: var(--tinta-suave);
-  line-height: 1.55;
-  margin: 0 0 14px;
-  flex: 1;
-}
-.btn-ver-vinas {
-  align-self: flex-start;
-  font-family: var(--serif);
-  font-size: 16px;
-  background: none;
-  border: 1px solid var(--linea);
-  color: var(--vino);
-  padding: 7px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.18s ease;
-}
-.btn-ver-vinas:hover { background: var(--vino); color: var(--crema-papel); border-color: var(--vino); }
+.card-cepa-nombre { font-family: var(--serif); font-size: 24px; font-weight: 700; margin: 0; }
+.card-cepa-tipo { font-size: 12px; text-transform: uppercase; background: rgba(201, 162, 75, 0.25); padding: 3px 9px; border-radius: 999px; }
+.btn-ver-vinas { margin-top: 12px; background: none; border: 1px solid var(--linea); padding: 7px 14px; border-radius: 999px; cursor: pointer; }
 
-/* ───────── Pie ───────── */
-.pie {
-  margin-top: 44px;
-  padding-top: 18px;
-  border-top: 2px solid var(--dorado);
-  text-align: center;
-  color: var(--tinta-suave);
-  font-style: italic;
-}
-.pie-nota { font-size: 14px; opacity: 0.8; margin-top: 4px; }
+.pie { margin-top: 44px; padding-top: 18px; border-top: 2px solid var(--dorado); text-align: center; color: var(--tinta-suave); }
 
-/* ───────── Responsive (celular) ───────── */
+/* MODO OSCURO */
+[data-tema="oscuro"] {
+  --vino: #c47a6b;
+  --vino-oscuro: #9e5e52;
+  --vino-claro: #d68f7e;
+  --dorado: #e6c97e;
+  --dorado-claro: #f5dfa5;
+  --crema: #2a241f;
+  --crema-papel: #3a2e28;
+  --tinta: #f0e6d8;
+  --tinta-suave: #cdc2b0;
+  --linea: #5f4e3f;
+}
+[data-tema="oscuro"] body { background: #1e1814; }
+.favoritos-badge { background: #e63946; color: white; border-radius: 20px; padding: 0 6px; font-size: 12px; margin-left: 4px; }
+
 @media (max-width: 760px) {
-  body { font-size: 16px; }
   .explorar-layout.con-region { grid-template-columns: 1fr; }
-  .mapa-wrap { position: relative; top: 0; max-width: 420px; margin: 0 auto; }
-  .cabecera { justify-content: center; text-align: center; }
-  .cabecera-marca { justify-content: center; }
+  .mapa-wrap { position: relative; top: 0; }
   .cabecera-titulo { font-size: 28px; }
-  .cabecera-nav { width: 100%; justify-content: center; }
-  .titulo-seccion { font-size: 26px; }
-  .ficha { padding: 28px 20px 24px; }
-  .ficha-nombre { font-size: 28px; }
 }
