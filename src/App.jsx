@@ -43,7 +43,7 @@ function App() {
       </Routes>
 
       <footer className="creditos">
-        Creado por <strong>Jaime Peñaloza</strong>
+        Creado por <strong>Jaime Ricardo Peñaloza</strong>
       </footer>
 
       {vinaActiva && (
