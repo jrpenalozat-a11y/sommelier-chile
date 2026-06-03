@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+// El SVG del mapa se embebe en el bundle (funciona offline y en un solo archivo)
+import chileMapaSvg from '../assets/chile-mapa.svg?raw';
 
 // ════════════════════════════════════════════════════════════
 //  Mapa real de Chile (chile-mapa.svg, Wikimedia Commons CC BY-SA)
@@ -97,8 +99,7 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
     if (!cont) return;
     cont.innerHTML = '<p class="mapa-cargando">Cargando mapa de Chile…</p>';
 
-    fetch(import.meta.env.BASE_URL + 'chile-mapa.svg')
-      .then((r) => r.text())
+    Promise.resolve(chileMapaSvg)
       .then((txt) => {
         if (cancelado) return;
         cont.innerHTML = txt;
