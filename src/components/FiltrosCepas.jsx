@@ -1,10 +1,12 @@
 import React from 'react';
+import { useT } from '../i18n';
 
 export default function FiltrosCepas({ cepasDisponibles, filtroCepas, setFiltroCepas }) {
+  const t = useT();
   if (!cepasDisponibles.length) return null;
   return (
     <div className="filtros-cepas">
-      <h4 className="filtros-titulo">🍇 Filtrar por cepa</h4>
+      <h4 className="filtros-titulo">{t.filtrarPorCepa}</h4>
       <div className="filtros-grupo">
         {cepasDisponibles.map(cepa => (
           <label key={cepa} className="filtro-check">
@@ -24,7 +26,7 @@ export default function FiltrosCepas({ cepasDisponibles, filtroCepas, setFiltroC
         ))}
       </div>
       {filtroCepas.length > 0 && (
-        <button className="filtros-limpiar" onClick={() => setFiltroCepas([])}>Limpiar filtros</button>
+        <button className="filtros-limpiar" onClick={() => setFiltroCepas([])}>{t.limpiarFiltros}</button>
       )}
     </div>
   );

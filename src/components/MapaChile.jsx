@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useT } from '../i18n';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -74,6 +75,7 @@ function visBBox(node) {
 
 export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSelectValle }) {
   const contRef = useRef(null);
+  const t = useT();
   const cb = useRef({});
   cb.current = { onSelectRegion, onSelectValle, regiones, regionActiva };
 
@@ -81,7 +83,7 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
     let cancelado = false;
     const cont = contRef.current;
     if (!cont) return;
-    cont.innerHTML = '<p class="mapa-cargando">Cargando mapa de Chile…</p>';
+    cont.innerHTML = `<p class="mapa-cargando">${t.mapaCargando}</p>`;
 
     fetch(import.meta.env.BASE_URL + 'chile-mapa.svg')
       .then((r) => r.text())
@@ -172,11 +174,11 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
         });
 
         const ZL = [
-          { t: 'Atacama', anchor: 'Region_Atacama', yo: 0 },
-          { t: 'Coquimbo', anchor: 'Region_Coquimbo', yo: -0.18 },
-          { t: 'Aconcagua', vp: true, yo: 0 },
-          { t: 'Valle Central', anchor: 'Region_OHiggins', yo: 0 },
-          { t: 'Sur', anchor: 'Region_Araucania', yo: 0 },
+          { key: 'atacama', anchor: 'Region_Atacama', yo: 0 },
+          { key: 'coquimbo', anchor: 'Region_Coquimbo', yo: -0.18 },
+          { key: 'aconcagua', vp: true, yo: 0 },
+          { key: 'valle-central', anchor: 'Region_OHiggins', yo: 0 },
+          { key: 'sur', anchor: 'Region_Araucania', yo: 0 },
         ];
         ZL.forEach((z) => {
           let landX, ly;
@@ -184,9 +186,9 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
           else { const b = bboxOf(z.anchor); if (!b) return; landX = b.x + b.width; ly = b.y + b.height * (0.5 + (z.yo || 0)); }
           const lx = landX + padR * 0.12;
           el('line', { x1: landX, y1: ly, x2: lx - padR * 0.03, y2: ly, class: 'mapa-zcnx' }, ann);
-          const t = el('text', { x: lx, y: ly + padR * 0.045, class: 'mapa-zlabel' }, ann);
-          t.setAttribute('font-size', padR * 0.14);
-          t.textContent = z.t;
+          const txt = el('text', { x: lx, y: ly + padR * 0.045, class: 'mapa-zlabel' }, ann);
+          txt.setAttribute('font-size', padR * 0.14);
+          txt.textContent = t.zonas[z.key];
         });
 
         [0.08, 0.16, 0.24].forEach((fy) => {
@@ -211,7 +213,7 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
         aplicarActivo(svg, cb.current.regionActiva);
       })
       .catch((e) => {
-        if (!cancelado && cont) cont.innerHTML = '<p class="mapa-cargando">No se pudo cargar el mapa.</p>';
+        if (!cancelado && cont) cont.innerHTML = `<p class="mapa-cargando">${t.mapaError}</p>`;
         console.error('Mapa Chile:', e);
       });
 
@@ -235,10 +237,10 @@ export default function MapaChile({ regiones, regionActiva, onSelectRegion, onSe
 
   return (
     <div className="mapa-wrap">
-      <p className="mapa-titulo">Valles Vitivinícolas de Chile</p>
-      <p className="mapa-sub">· De norte a sur ·</p>
-      <div className="mapa-area" ref={contRef} aria-label="Mapa de las zonas vitícolas de Chile" />
-      <p className="mapa-hint">Toca una zona para ver sus valles · toca un pin para ir al valle</p>
+      <p className="mapa-titulo">{t.mapaTitulo}</p>
+      <p className="mapa-sub">{t.mapaSub}</p>
+      <div className="mapa-area" ref={contRef} aria-label={t.mapaTitulo} />
+      <p className="mapa-hint">{t.mapaHint}</p>
       <p className="mapa-atrib">Mapa: Wikimedia Commons · CC BY-SA</p>
     </div>
   );

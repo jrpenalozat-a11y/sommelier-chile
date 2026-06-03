@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
-import { REGIONES } from '../../vinas-chile-datos.js';
+import { useDatos, useT } from '../i18n';
 
 export default function FichaVina({ vina, nombreRegion, onClose }) {
+  const { REGIONES } = useDatos();
+  const t = useT();
+
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && onClose();
     document.addEventListener('keydown', onKey);
@@ -14,7 +17,7 @@ export default function FichaVina({ vina, nombreRegion, onClose }) {
 
   if (!vina) return null;
 
-  // Si no llega nombreRegion por props, se deriva de los datos.
+  // Si no llega nombreRegion por props, se deriva de los datos (ya traducidos).
   const region = nombreRegion || REGIONES.find(r => r.id === vina.region)?.nombre || '';
 
   return (
@@ -30,19 +33,19 @@ export default function FichaVina({ vina, nombreRegion, onClose }) {
           </div>
         )}
         <div className="ficha-divisor">❧</div>
-        <p className="ficha-descripcion">{vina.descripcion || vina.destacados?.[0] || 'Viña chilena con tradición.'}</p>
+        <p className="ficha-descripcion">{vina.descripcion || vina.destacados?.[0] || t.fichaDescFallback}</p>
         <div className="ficha-bloque">
-          <h3 className="ficha-label">Terruño</h3>
-          <p className="ficha-terruno">{vina.terruno || 'Suelos variados del valle.'}</p>
+          <h3 className="ficha-label">{t.terruno}</h3>
+          <p className="ficha-terruno">{vina.terruno || t.fichaTerrunoFallback}</p>
         </div>
         <div className="ficha-bloque">
-          <h3 className="ficha-label">Cepas</h3>
+          <h3 className="ficha-label">{t.grapes}</h3>
           <ul className="ficha-cepas">
             {vina.cepas.map(c => <li key={c} className="ficha-cepa">{c}</li>)}
           </ul>
         </div>
         <div className="ficha-bloque">
-          <h3 className="ficha-label">Vinos destacados</h3>
+          <h3 className="ficha-label">{t.vinosDestacados}</h3>
           <ul className="ficha-destacados">
             {vina.destacados.map(d => <li key={d} className="ficha-destacado">🍷 {d}</li>)}
           </ul>

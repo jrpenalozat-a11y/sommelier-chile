@@ -1,20 +1,22 @@
 import React from 'react';
 import { useFavoritos } from '../context/FavoritosContext';
-import { VINAS } from '../../vinas-chile-datos.js';
+import { useDatos, useT } from '../i18n';
 import ListaVinas from '../components/ListaVinas.jsx';
 
 export default function FavoritosPage({ onVerVina }) {
   const { favoritos } = useFavoritos();
-  const viñasFavoritas = VINAS.filter(v => favoritos.includes(v.nombre));
+  const { VINAS } = useDatos();
+  const t = useT();
+  const vinasFavoritas = VINAS.filter(v => favoritos.includes(v.nombre));
 
   return (
     <main className="contenido">
       <ListaVinas
-        titulo="Mis viñas favoritas"
-        subtitulo={`${viñasFavoritas.length} viñas guardadas`}
-        vinas={viñasFavoritas}
+        titulo={t.misFavoritas}
+        subtitulo={t.vinasGuardadas(vinasFavoritas.length)}
+        vinas={vinasFavoritas}
         onSelectVina={onVerVina}
-        vacioTexto="No tienes viñas favoritas aún. Haz clic en el corazón ❤️ en cualquier viña para agregarla."
+        vacioTexto={t.favVacio}
       />
     </main>
   );

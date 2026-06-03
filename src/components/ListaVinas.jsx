@@ -1,15 +1,17 @@
 import React from 'react';
 import { useFavoritos } from '../context/FavoritosContext';
+import { useT } from '../i18n';
 
 export default function ListaVinas({ titulo, subtitulo, vinas, onSelectVina, vacioTexto }) {
   const { favoritos, toggleFavorito } = useFavoritos();
+  const t = useT();
 
   return (
     <section className="lista-vinas">
       {titulo && <h2 className="titulo-seccion">{titulo}</h2>}
       {subtitulo && <p className="region-desc">{subtitulo}</p>}
       {vinas.length === 0 ? (
-        <p className="vacio">{vacioTexto || 'No hay viñas para mostrar.'}</p>
+        <p className="vacio">{vacioTexto || t.sinVinas}</p>
       ) : (
         <ul className="grilla-vinas">
           {vinas.map(vina => (

@@ -1,12 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { REGIONES, VINAS } from '../../vinas-chile-datos.js';
+import { useDatos, useT } from '../i18n';
+import { useIdioma } from '../context/IdiomaContext';
 import MapaChile from '../components/MapaChile.jsx';
 import PanelValles from '../components/PanelValles.jsx';
 import ListaVinas from '../components/ListaVinas.jsx';
 import FiltrosCepas from '../components/FiltrosCepas.jsx';
 
 export default function ExplorarPage({ onVerVina }) {
+  const { REGIONES, VINAS } = useDatos();
+  const t = useT();
+  const { idioma } = useIdioma();
   const [searchParams, setSearchParams] = useSearchParams();
   const regionId = searchParams.get('region');
   const valleNombre = searchParams.get('valle');
@@ -29,7 +33,7 @@ export default function ExplorarPage({ onVerVina }) {
       filtradas = filtradas.filter(v => v.cepas.some(c => filtroCepas.includes(c)));
     }
     return filtradas;
-  }, [region, valleActivo, filtroCepas]);
+  }, [region, valleActivo, filtroCepas, VINAS]);
 
   const todasCepasDelValle = useMemo(() => {
     if (!vinasDelValle.length) return [];
@@ -46,7 +50,7 @@ export default function ExplorarPage({ onVerVina }) {
       v.valle.toLowerCase().includes(q) ||
       v.cepas.some(c => c.toLowerCase().includes(q))
     );
-  }, [busqueda]);
+  }, [busqueda, VINAS]);
 
   return (
     <main className="contenido">
@@ -54,7 +58,7 @@ export default function ExplorarPage({ onVerVina }) {
         <input
           type="search"
           className="buscador"
-          placeholder="Buscar viña, cepa o valle…"
+          placeholder={t.buscarPlaceholder}
           value={busqueda}
           onChange={(e) => setSearchParams({ buscar: e.target.value })}
         />
@@ -65,8 +69,8 @@ export default function ExplorarPage({ onVerVina }) {
 
       {busqueda ? (
         <ListaVinas
-          titulo={`Resultados para “${busqueda}”`}
-          subtitulo={`${vinasFiltradasBusqueda.length} viñas encontradas`}
+          titulo={t.resultadosPara(busqueda)}
+          subtitulo={t.vinasEncontradas(vinasFiltradasBusqueda.length)}
           vinas={vinasFiltradasBusqueda}
           onSelectVina={onVerVina}
         />
@@ -74,7 +78,7 @@ export default function ExplorarPage({ onVerVina }) {
         <>
           {region && (
             <nav className="migas">
-              <button className="miga" onClick={volverAlMapa}>Mapa</button>
+              <button className="miga" onClick={volverAlMapa}>{t.mapa}</button>
               <span className="miga-sep">›</span>
               <button className={`miga ${!valleActivo ? 'actual' : ''}`} onClick={limpiarValle}>
                 {region.nombre}
@@ -90,6 +94,7 @@ export default function ExplorarPage({ onVerVina }) {
 
           <div className={`explorar-layout ${region ? 'con-region' : ''}`}>
             <MapaChile
+              key={idioma}
               regiones={REGIONES}
               regionActiva={regionId}
               onSelectRegion={setRegion}
@@ -110,8 +115,8 @@ export default function ExplorarPage({ onVerVina }) {
                         />
                       )}
                       <ListaVinas
-                        titulo={`Viñas de ${valleActivo}`}
-                        subtitulo={`${vinasDelValle.length} viñas`}
+                        titulo={t.vinasDe(valleActivo)}
+                        subtitulo={t.vinasCount(vinasDelValle.length)}
                         vinas={vinasDelValle}
                         onSelectVina={onVerVina}
                       />
@@ -121,7 +126,7 @@ export default function ExplorarPage({ onVerVina }) {
               )}
               {!region && (
                 <div className="intro">
-                  <p className="intro-texto">Selecciona una región en el mapa para explorar sus valles y viñas.</p>
+                  <p className="intro-texto">{t.introSelecciona}</p>
                 </div>
               )}
             </div>
