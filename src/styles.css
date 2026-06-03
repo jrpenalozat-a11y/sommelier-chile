@@ -179,6 +179,13 @@ body {
 
 .pie { margin-top: 44px; padding-top: 18px; border-top: 2px solid var(--dorado); text-align: center; color: var(--tinta-suave); }
 
+.creditos {
+  margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--linea);
+  text-align: center; font-family: var(--serif); font-size: 15px;
+  color: var(--tinta-suave); letter-spacing: 0.3px;
+}
+.creditos strong { color: var(--vino); font-weight: 600; }
+
 /* MODO OSCURO */
 [data-tema="oscuro"] {
   --vino: #c47a6b;

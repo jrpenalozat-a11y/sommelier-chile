@@ -42,6 +42,10 @@ function App() {
         <Route path="/favoritos" element={<FavoritosPage onVerVina={setVinaActiva} />} />
       </Routes>
 
+      <footer className="creditos">
+        Creado por <strong>Jaime Peñaloza</strong>
+      </footer>
+
       {vinaActiva && (
         <FichaVina vina={vinaActiva} onClose={() => setVinaActiva(null)} />
       )}
