@@ -185,6 +185,43 @@ body {
   color: var(--tinta-suave); letter-spacing: 0.3px;
 }
 .creditos strong { color: var(--vino); font-weight: 600; }
+.creditos-texto { font-size: 15px; }
+
+/* Botón compartir + instalar (cabecera) */
+.compartir-btn {
+  background: none; border: 1px solid var(--linea); border-radius: 999px;
+  font-size: 1.2rem; cursor: pointer; padding: 4px 10px; line-height: 1; transition: all 0.18s ease;
+}
+.compartir-btn:hover { border-color: var(--dorado); background: rgba(201, 162, 75, 0.12); }
+.instalar-btn {
+  font-family: var(--serif); font-size: 15px; cursor: pointer;
+  background: var(--vino); color: var(--crema-papel); border: 1px solid var(--vino);
+  border-radius: 999px; padding: 7px 14px; transition: all 0.18s ease; white-space: nowrap;
+}
+.instalar-btn:hover { background: var(--vino-claro); transform: translateY(-1px); box-shadow: var(--sombra); }
+
+/* Familia de apps (enlaces cruzados) */
+.familia { margin-bottom: 18px; }
+.familia-titulo {
+  font-family: var(--serif); font-size: 14px; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--tinta-suave); margin: 0 0 10px;
+}
+.familia-apps { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.familia-app {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  font-family: var(--serif); font-size: 16px; color: var(--vino);
+  background: var(--crema-papel); border: 1px solid var(--linea); border-radius: 999px;
+  padding: 8px 16px; transition: all 0.18s ease;
+}
+.familia-app:hover { border-color: var(--dorado); background: #fff; transform: translateY(-2px); box-shadow: var(--sombra); }
+.familia-emoji { font-size: 18px; }
+
+/* Sello de marca en el pie */
+.marca-logo {
+  display: block; margin: 0 auto 10px; max-width: 240px; width: 60%;
+  border-radius: 10px; border: 1px solid var(--linea);
+  box-shadow: 0 6px 18px rgba(61, 18, 32, 0.18);
+}
 
 /* Botón toggle de idioma (cabecera) */
 .idioma-toggle {

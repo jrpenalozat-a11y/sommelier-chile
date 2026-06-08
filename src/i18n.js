@@ -35,6 +35,12 @@ export const T = {
     mapaError: 'No se pudo cargar el mapa.',
     zonas: { atacama: 'Atacama', coquimbo: 'Coquimbo', aconcagua: 'Aconcagua', 'valle-central': 'Valle Central', sur: 'Sur' },
     bienvenidaSub: 'Elige tu idioma · Choose your language',
+    compartir: 'Compartir',
+    masApps: 'Más de la familia',
+    compartirTexto: 'Descubre los vinos chilenos por valle 🍷',
+    enlaceCopiado: 'Enlace copiado ✓',
+    instalar: 'Instalar app',
+    instalarAyuda: 'Para instalarla, abre el menú de tu navegador y elige «Agregar a pantalla de inicio» o «Instalar app».',
   },
   en: {
     lema: 'Wines by valley, from north to south',
@@ -67,6 +73,12 @@ export const T = {
     mapaError: 'Could not load the map.',
     zonas: { atacama: 'Atacama', coquimbo: 'Coquimbo', aconcagua: 'Aconcagua', 'valle-central': 'Central Valley', sur: 'South' },
     bienvenidaSub: 'Elige tu idioma · Choose your language',
+    compartir: 'Share',
+    masApps: 'More from the family',
+    compartirTexto: 'Discover Chilean wines by valley 🍷',
+    enlaceCopiado: 'Link copied ✓',
+    instalar: 'Install app',
+    instalarAyuda: 'To install it, open your browser menu and choose “Add to Home Screen” or “Install app”.',
   },
 };
 

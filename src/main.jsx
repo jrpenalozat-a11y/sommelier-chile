@@ -7,6 +7,13 @@ import { TemaProvider } from './context/TemaContext';
 import { FavoritosProvider } from './context/FavoritosContext';
 import './styles.css';
 
+// PWA: registra el service worker (instalable + offline)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js').catch(() => {});
+  });
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename={import.meta.env.BASE_URL}>

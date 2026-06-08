@@ -1,0 +1,14 @@
+{
+  "name": "Sommelier de Chile",
+  "short_name": "Sommelier",
+  "description": "Vinos chilenos por valle: regiones, viñas y cepas. Mapa de norte a sur.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6efe2",
+  "theme_color": "#5b1a2b",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
